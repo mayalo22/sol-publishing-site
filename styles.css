@@ -100,6 +100,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .book-number { position: absolute; top: .9rem; left: 1rem; z-index: 2; color: rgba(16,24,36,.45); font: 700 .72rem var(--sans); }
 .book-body { padding: 1.35rem; }
 .book-author { margin: 0; color: var(--blue-dark); font-size: .78rem; font-weight: 700; }
+.book-bestsellers { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+.bestseller-badge { display: inline-flex; align-items: center; min-height: 25px; padding: .25rem .55rem; border: 1px solid rgba(168,78,85,.3); border-radius: 999px; background: #fff1e5; color: #8b3d49; font-size: .61rem; font-weight: 700; }
+.bestseller-badge:hover { background: var(--blue); color: var(--ink); }
 .book-card h3 { min-height: 2.3em; margin: .35rem 0 .65rem; font-size: clamp(1.55rem, 2vw, 2.05rem); line-height: 1.05; }
 .book-description { min-height: 5.5em; margin: 0; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; color: #59636e; font-size: .86rem; line-height: 1.62; }
 .rating-row { display: flex; gap: .8rem; align-items: center; margin-top: 1rem; color: #68717b; font-size: .74rem; }

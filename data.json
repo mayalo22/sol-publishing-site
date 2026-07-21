@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-21T18:53:48.213Z",
+  "updatedAt": "2026-07-21T19:32:14.236Z",
   "sourceUrl": "https://www.e-vrit.co.il/Publisher/3051/%D7%A1%D7%95%D7%9C",
   "books": [
     {
@@ -59,6 +59,7 @@
           }
         ]
       },
+      "bestsellers": [],
       "sales": 765,
       "reviews": {
         "count": 141,
@@ -145,6 +146,7 @@
           }
         ]
       },
+      "bestsellers": [],
       "sales": 733,
       "reviews": {
         "count": 82,
@@ -225,6 +227,7 @@
           }
         ]
       },
+      "bestsellers": [],
       "sales": 304,
       "reviews": {
         "count": 54,
@@ -311,6 +314,7 @@
           }
         ]
       },
+      "bestsellers": [],
       "sales": 442,
       "reviews": {
         "count": 57,
@@ -358,16 +362,16 @@
             "url": "https://www.steimatzky.co.il/012010556"
           },
           {
-            "store": "אינדיבוק",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://indiebook.co.il/shop/הדרקון-היהודי"
-          },
-          {
             "store": "ביבוקס",
             "price": 24,
             "priceBefore": 35,
             "url": "https://bbooks.co.il/book/הדרקון-היהודי"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/הדרקון-היהודי"
           }
         ],
         "print": [
@@ -384,19 +388,20 @@
             "url": "https://www.steimatzky.co.il/012010556"
           },
           {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/הדרקון-היהודי"
-          },
-          {
             "store": "צומת ספרים",
             "price": 98,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/הדרקון-היהודי-160100000055"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/הדרקון-היהודי"
           }
         ]
       },
+      "bestsellers": [],
       "sales": 247,
       "reviews": {
         "count": 42,
@@ -460,19 +465,20 @@
             "url": "https://www.steimatzky.co.il/012010557"
           },
           {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/קוצים"
-          },
-          {
             "store": "צומת ספרים",
             "price": 98,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/קוצים-160100000048"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/קוצים"
           }
         ]
       },
+      "bestsellers": [],
       "sales": 294,
       "reviews": {
         "count": 36,
@@ -550,16 +556,16 @@
             "url": "https://www.steimatzky.co.il/012010569"
           },
           {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
-          },
-          {
             "store": "צומת ספרים",
             "price": 98,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/כוכבים-רואים-רק-בחושך-160100000079"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
           }
         ],
         "audio": [
@@ -577,6 +583,7 @@
           }
         ]
       },
+      "bestsellers": [],
       "sales": 374,
       "reviews": {
         "count": 50,
@@ -618,16 +625,16 @@
             "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
           },
           {
-            "store": "ביבוקס",
-            "price": 20,
-            "priceBefore": 35,
-            "url": "https://bbooks.co.il/book/הטעם-החמישי"
-          },
-          {
             "store": "אינדיבוק",
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/הטעם-החמישי"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 20,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/הטעם-החמישי"
           }
         ],
         "print": [
@@ -651,6 +658,13 @@
           }
         ]
       },
+      "bestsellers": [
+        {
+          "store": "ביבוקס",
+          "label": "רב־מכר בביבוקס",
+          "url": "https://bbooks.co.il/רבי-מכר"
+        }
+      ],
       "sales": 277,
       "reviews": {
         "count": 30,
@@ -665,5 +679,19 @@
     "סטימצקי",
     "צומת ספרים",
     "אינדיבוק"
+  ],
+  "bestsellerSources": [
+    {
+      "store": "עברית",
+      "url": "https://www.e-vrit.co.il/group/2572/רבי-המכר-של-השבוע"
+    },
+    {
+      "store": "ביבוקס",
+      "url": "https://bbooks.co.il/רבי-מכר"
+    },
+    {
+      "store": "אינדיבוק",
+      "url": "https://indiebook.co.il/31/רבי-מכר"
+    }
   ]
 }

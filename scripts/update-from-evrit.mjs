@@ -5,6 +5,12 @@ const coversDir = new URL("../assets/covers/", import.meta.url);
 const publisherUrl = "https://www.e-vrit.co.il/Publisher/3051/%D7%A1%D7%95%D7%9C";
 const headers = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/138 Safari/537.36", "accept-language": "he-IL,he;q=0.9,en;q=0.7" };
 
+const bestsellerSources = [
+  { store: "עברית", url: "https://www.e-vrit.co.il/group/2572/רבי-המכר-של-השבוע" },
+  { store: "ביבוקס", url: "https://bbooks.co.il/רבי-מכר" },
+  { store: "אינדיבוק", url: "https://indiebook.co.il/31/רבי-מכר" }
+];
+
 const productSources = {
   "31855": { steimatzky: "https://www.steimatzky.co.il/012010346" },
   "38170": { booknet: "https://www.booknet.co.il/מוצרים/לא-אוותר-לעולם--מעיין-גלעד", steimatzky: "https://www.steimatzky.co.il/012010524" },
@@ -43,6 +49,36 @@ function evritPricing(productPricing = {}) {
 function cleanText(html) {
   return html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;|&#160;/gi, " ").replace(/&quot;/gi, '"').replace(/&amp;/gi, "&").replace(/\s+/g, " ").trim();
+}
+
+const normalize = value => value.normalize("NFKC").replace(/[־–—-]/g, " ").replace(/[׳’']/g, "").replace(/\s+/g, " ").trim().toLocaleLowerCase("he");
+
+async function loadBestsellerLists() {
+  const lists = new Map();
+  await Promise.all(bestsellerSources.map(async source => {
+    try {
+      const html = await (await fetchResource(source.url)).text();
+      let text = cleanText(html);
+      if (source.section) {
+        const index = text.indexOf("רבי מכר");
+        text = index >= 0 ? text.slice(index, index + 3200) : "";
+      }
+      lists.set(source.store, { success: true, text: normalize(text), url: source.url });
+    } catch (error) {
+      console.warn(`${source.store} bestseller list failed: ${error.message}`);
+      lists.set(source.store, { success: false, text: "", url: source.url });
+    }
+  }));
+  return lists;
+}
+
+function bestsellerBadges(title, sourceTitle, lists, previous = []) {
+  const candidates = [normalize(title), normalize(sourceTitle)].filter(Boolean);
+  return bestsellerSources.flatMap(source => {
+    const list = lists.get(source.store);
+    if (!list?.success) return previous.filter(item => item.store === source.store);
+    return candidates.some(candidate => candidate.length > 3 && list.text.includes(candidate)) ? [{ store: source.store, label: `רב־מכר ב${source.store}`, url: list.url }] : [];
+  });
 }
 
 function productText(html, title) {
@@ -145,6 +181,7 @@ const existing = JSON.parse(await readFile(dataUrl, "utf8"));
 await mkdir(coversDir, { recursive: true });
 const products = extractProducts(await (await fetchResource(publisherUrl)).text());
 if (!products.length) throw new Error("The publisher page returned an empty catalog");
+const bestsellerLists = await loadBestsellerLists();
 
 const books = [];
 for (const product of products) {
@@ -159,6 +196,7 @@ for (const product of products) {
     pages: product.NumOfPages ? Number(product.NumOfPages) : null,
     categories: product.Categories?.map(category => category.Name) || [], pricing: evritPricing(product.ProductPricing),
     offers: await storeOffers(product, url, previous?.offers),
+    bestsellers: bestsellerBadges(title, product.ProductName, bestsellerLists, previous?.bestsellers),
     sales: Number(product.AllTimeOrders) || 0,
     reviews: { count: Number(product.CountReviews) || 0, average: Number(product.AvgReviews) || 0 },
     themeColor: product.ThemeColor || "#D88972"
@@ -166,6 +204,6 @@ for (const product of products) {
 }
 
 books.sort((a, b) => (a.year - b.year) || (a.month - b.month) || (Number(a.id) - Number(b.id)));
-const next = { ...existing, updatedAt: new Date().toISOString(), sourceUrl: publisherUrl, stores: ["עברית", "ביבוקס", "סטימצקי", "צומת ספרים", "אינדיבוק"], books };
+const next = { ...existing, updatedAt: new Date().toISOString(), sourceUrl: publisherUrl, stores: ["עברית", "ביבוקס", "סטימצקי", "צומת ספרים", "אינדיבוק"], bestsellerSources: bestsellerSources.map(({ store, url }) => ({ store, url })), books };
 await writeFile(dataUrl, `${JSON.stringify(next, null, 2)}\n`, "utf8");
-console.log(`Updated ${books.length} books and compared five stores at ${next.updatedAt}`);
+console.log(`Updated ${books.length} books, compared five stores and checked bestseller lists at ${next.updatedAt}`);
