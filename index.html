@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="הוצאת סול — רומנים ישראליים שנכנסים ללב. קטלוג ספרים והשוואת מחירים בין חנויות לפי פורמט.">
+  <meta name="theme-color" content="#291c2b">
+  <title>הוצאת סול | סיפורים שנשארים איתך</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#catalog">דלגו לקטלוג</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="הוצאת סול — דף הבית">
+      <img class="brand-logo" src="assets/sol-logo.svg" alt="הוצאת סול">
+    </a>
+    <nav aria-label="ניווט ראשי">
+      <a href="#catalog">הספרים</a>
+      <a href="#about">על סול</a>
+      <a href="#updates">עדכונים</a>
+    </nav>
+    <a class="header-cta" href="#catalog">למציאת הספר הבא</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">הוצאת סול · ספרות רומנטית ישראלית</p>
+        <h1 id="hero-title">סיפורים שנכנסים ללב.<br><em>ונשארים שם.</em></h1>
+        <p class="hero-intro">רומנים נועזים, מרגשים ובלתי נשכחים — על אהבה, בחירה, כאב, תשוקה והאומץ להתחיל מחדש.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#catalog">לכל הספרים <span aria-hidden="true">←</span></a>
+          <a class="button button-ghost" href="#about">להכיר את סול</a>
+        </div>
+        <div class="hero-proof" aria-label="נתוני הקטלוג">
+          <span><strong id="hero-count">—</strong> ספרים בקטלוג</span>
+          <span><strong>שבועי</strong> עדכון אוטומטי</span>
+          <span><strong>100%</strong> ספרות מקור</span>
+        </div>
+      </div>
+
+      <div class="hero-stage reveal" aria-label="מבחר עטיפות מספרי הוצאת סול">
+        <div class="sun-ring sun-ring-one" aria-hidden="true"></div>
+        <div class="sun-ring sun-ring-two" aria-hidden="true"></div>
+        <div id="hero-covers" class="hero-covers" aria-live="polite"></div>
+        <span class="hero-stamp">מילים. רגש. אור.</span>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="ערכי ההוצאה">
+      <div class="ticker-track">
+        <span>אהבות גדולות</span><i>✦</i><span>קולות ישראליים</span><i>✦</i><span>דמויות שלא שוכחים</span><i>✦</i><span>ספרים שקוראים בנשימה אחת</span><i>✦</i>
+        <span>אהבות גדולות</span><i>✦</i><span>קולות ישראליים</span><i>✦</i><span>דמויות שלא שוכחים</span><i>✦</i><span>ספרים שקוראים בנשימה אחת</span><i>✦</i>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="catalog">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow dark">הקטלוג של סול</p>
+          <h2>איזה סיפור<br>ייקח אתכן מכאן?</h2>
+        </div>
+        <p>בחרו בכל ספר בין מודפס, דיגיטלי וקולי, השוו מחירים מעברית, ביבוקס, סטימצקי, צומת ספרים ואינדיבוק — והמחיר הנמוך בכל פורמט יסומן אוטומטית.</p>
+      </div>
+
+      <div class="catalog-tools reveal">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <span class="sr-only">חיפוש ספר או סופרת</span>
+          <input id="catalog-search" type="search" placeholder="חיפוש לפי ספר או סופרת…" autocomplete="off">
+        </label>
+        <div id="category-filters" class="filters" aria-label="סינון לפי קטגוריה"></div>
+      </div>
+
+      <div id="books-grid" class="books-grid" aria-live="polite"></div>
+      <p id="empty-state" class="empty-state" hidden>לא מצאנו ספר שמתאים לחיפוש הזה. נסו מילה אחרת.</p>
+      <p id="sync-status" class="sync-status">טוען את קטלוג הוצאת סול…</p>
+    </section>
+
+    <section class="manifesto" id="about">
+      <div class="manifesto-mark" aria-hidden="true">S</div>
+      <div class="manifesto-copy reveal">
+        <p class="eyebrow">על הוצאת סול</p>
+        <h2>אנחנו מאמינות שסיפור טוב לא רק מסיח את הדעת — הוא מזיז משהו בפנים.</h2>
+        <p>בסול תמצאו ספרות רומנטית ישראלית עם לב, קצב וקול ברור: גיבורות שלא מתנצלות, גיבורים שנאלצים להשתנות, ועולמות שאפשר להיעלם לתוכם עד העמוד האחרון.</p>
+      </div>
+      <div class="manifesto-list reveal">
+        <span><b>01</b> קולות מקומיים</span>
+        <span><b>02</b> עריכה מוקפדת</span>
+        <span><b>03</b> רגש בלי קיצורי דרך</span>
+      </div>
+    </section>
+
+    <section class="updates-section" id="updates">
+      <div class="updates-card reveal">
+        <div>
+          <p class="eyebrow">הכול נשאר עדכני</p>
+          <h2>ספר חדש או מחיר חדש?<br>האתר נשאר מעודכן.</h2>
+        </div>
+        <p>פעם בשבוע האתר מרענן את הקטלוג ומשווה מחירים בחנויות הספרים. בכל פורמט מסומן המחיר המשתלם ביותר, עם מעבר ישיר לעמוד הרכישה המתאים.</p>
+        <a class="button button-light" href="#catalog">להשוואת המחירים</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#top">
+      <img class="brand-logo" src="assets/sol-logo.svg" alt="הוצאת סול">
+    </a>
+    <p>© <span id="year"></span> הוצאת סול. כל הזכויות שמורות.</p>
+    <div class="social-links" aria-label="הוצאת סול ברשתות החברתיות">
+      <a href="https://www.instagram.com/explore/search/keyword/?q=soul%20publishing" target="_blank" rel="noopener" aria-label="Soul Publishing באינסטגרם">Instagram</a>
+      <a href="https://www.tiktok.com/search?q=soul%20publishing" target="_blank" rel="noopener" aria-label="Soul Publishing בטיקטוק">TikTok</a>
+      <a href="#top">חזרה למעלה ↑</a>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

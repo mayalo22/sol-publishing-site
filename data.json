@@ -1,0 +1,669 @@
+{
+  "updatedAt": "2026-07-21T18:53:48.213Z",
+  "sourceUrl": "https://www.e-vrit.co.il/Publisher/3051/%D7%A1%D7%95%D7%9C",
+  "books": [
+    {
+      "id": "31855",
+      "title": "מלאך שלי",
+      "sourceTitle": "מלאך שלי",
+      "author": "אריאלה הראש",
+      "description": "מלאך שלי בלב הסערה: כשמלאכי מתאהבת בזמר קולומביאני ידוע, אהבתם הלוהטת נלחמת באיומים ובעולמות המתנגשים שמנסים להפריד ביניהם.",
+      "cover": "assets/covers/31855.jpg",
+      "url": "https://www.e-vrit.co.il/product/31855/%D7%9E%D7%9C%D7%90%D7%9A-%D7%A9%D7%9C%D7%99",
+      "year": 2024,
+      "month": 4,
+      "pages": 323,
+      "categories": [
+        "רומן רומנטי",
+        "רומן אירוטי"
+      ],
+      "pricing": {
+        "digital": {
+          "price": 25,
+          "priceBefore": 32
+        }
+      },
+      "offers": {
+        "digital": [
+          {
+            "store": "עברית",
+            "price": 25,
+            "priceBefore": 32,
+            "url": "https://www.e-vrit.co.il/product/31855/%D7%9E%D7%9C%D7%90%D7%9A-%D7%A9%D7%9C%D7%99"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 32,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010346"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 22,
+            "priceBefore": 32,
+            "url": "https://bbooks.co.il/book/מלאך-שלי"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 32,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/מלאך-שלי"
+          }
+        ],
+        "print": [
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/מלאך-שלי"
+          }
+        ]
+      },
+      "sales": 765,
+      "reviews": {
+        "count": 141,
+        "average": 4.37
+      },
+      "themeColor": "#B5EDFE"
+    },
+    {
+      "id": "38170",
+      "title": "לא אוותר לעולם",
+      "sourceTitle": "לא אוותר לעולם",
+      "author": "מעיין גלעד",
+      "description": "קצינה בכירה ופיקוד מתנגשים באהבה אסורה כשנעמי פוגשת את גיא, החייל שמערער את כל מה שידעה על חובה, קריירה והלב.",
+      "cover": "assets/covers/38170.jpg",
+      "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D",
+      "year": 2025,
+      "month": 12,
+      "pages": 398,
+      "categories": [
+        "רומן רומנטי",
+        "רומן אירוטי"
+      ],
+      "pricing": {
+        "digital": {
+          "price": 25,
+          "priceBefore": 35
+        },
+        "print": {
+          "price": 68.6,
+          "priceBefore": null
+        }
+      },
+      "offers": {
+        "digital": [
+          {
+            "store": "עברית",
+            "price": 25,
+            "priceBefore": 35,
+            "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 27,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010524"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 24,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/לא-אוותר-לעולם"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/לא-אוותר-לעולם"
+          }
+        ],
+        "print": [
+          {
+            "store": "עברית",
+            "price": 68.6,
+            "priceBefore": null,
+            "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010524"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/לא-אוותר-לעולם"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/לא-אוותר-לעולם--מעיין-גלעד"
+          }
+        ]
+      },
+      "sales": 733,
+      "reviews": {
+        "count": 82,
+        "average": 4.11
+      },
+      "themeColor": "#1C1C1C"
+    },
+    {
+      "id": "38171",
+      "title": "בין בריחה לאהבה",
+      "sourceTitle": "בין בריחה לאהבה",
+      "author": "סטלה",
+      "description": "איך לברוח מהעבר כשהוא רודף אחריך? בין שלג בולגרי ואהבה חדשה, אישה אחת צריכה להחליט אם להמשיך לברוח או סוף-סוף לתת ללב שלה להחלים.",
+      "cover": "assets/covers/38171.jpg",
+      "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94",
+      "year": 2025,
+      "month": 12,
+      "pages": 300,
+      "categories": [
+        "רומן רומנטי",
+        "רומן אירוטי"
+      ],
+      "pricing": {
+        "digital": {
+          "price": 25,
+          "priceBefore": 35
+        },
+        "print": {
+          "price": 68.6,
+          "priceBefore": null
+        }
+      },
+      "offers": {
+        "digital": [
+          {
+            "store": "עברית",
+            "price": 25,
+            "priceBefore": 35,
+            "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 27,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010525"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 24,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/בין-בריחה-לאהבה"
+          }
+        ],
+        "print": [
+          {
+            "store": "עברית",
+            "price": 68.6,
+            "priceBefore": null,
+            "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/בין-בריחה-לאהבה-1-160100000024"
+          }
+        ]
+      },
+      "sales": 304,
+      "reviews": {
+        "count": 54,
+        "average": 4.5
+      },
+      "themeColor": "#B5EDFE"
+    },
+    {
+      "id": "39393",
+      "title": "אאמין לך",
+      "sourceTitle": "אאמין לך",
+      "author": "רינטה אונגר",
+      "description": "כששני זרים נפגשים בעיירה קטנה, אהבתם מתלקחת בתוך עולם מסוכן של פשע וסמים, ועליהם לבחור בין הבריחה להתמודדות.",
+      "cover": "assets/covers/39393.jpg",
+      "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A",
+      "year": 2026,
+      "month": 4,
+      "pages": 387,
+      "categories": [
+        "רומן רומנטי",
+        "רומן אירוטי"
+      ],
+      "pricing": {
+        "digital": {
+          "price": 25,
+          "priceBefore": 35
+        },
+        "print": {
+          "price": 68.6,
+          "priceBefore": null
+        }
+      },
+      "offers": {
+        "digital": [
+          {
+            "store": "עברית",
+            "price": 25,
+            "priceBefore": 35,
+            "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010555"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 24,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/אאמין-לך"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/אאמין-לך"
+          }
+        ],
+        "print": [
+          {
+            "store": "עברית",
+            "price": 68.6,
+            "priceBefore": null,
+            "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010555"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/אאמין-לך"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/אאמין-לך-1-160100000031"
+          }
+        ]
+      },
+      "sales": 442,
+      "reviews": {
+        "count": 57,
+        "average": 4.42
+      },
+      "themeColor": "#F75F8A"
+    },
+    {
+      "id": "39416",
+      "title": "הדרקון היהודי",
+      "sourceTitle": "הדרקון היהודי",
+      "author": "אריאלה הראש",
+      "description": "כשנכלאתי ביפן, שירו היה הסכנה הגדולה והמגן היחיד שלי; כשפגשתי את איומי, אחותו, ידעתי שאשאר בעולם היאקוזה האסור למרות המחיר.",
+      "cover": "assets/covers/39416.jpg",
+      "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99",
+      "year": 2026,
+      "month": 4,
+      "pages": 385,
+      "categories": [
+        "רומן רומנטי",
+        "רומן אירוטי"
+      ],
+      "pricing": {
+        "digital": {
+          "price": 25,
+          "priceBefore": 35
+        },
+        "print": {
+          "price": 68.6,
+          "priceBefore": null
+        }
+      },
+      "offers": {
+        "digital": [
+          {
+            "store": "עברית",
+            "price": 25,
+            "priceBefore": 35,
+            "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010556"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/הדרקון-היהודי"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 24,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/הדרקון-היהודי"
+          }
+        ],
+        "print": [
+          {
+            "store": "עברית",
+            "price": 68.6,
+            "priceBefore": null,
+            "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010556"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/הדרקון-היהודי"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/הדרקון-היהודי-160100000055"
+          }
+        ]
+      },
+      "sales": 247,
+      "reviews": {
+        "count": 42,
+        "average": 4.4
+      },
+      "themeColor": "#1C1C1C"
+    },
+    {
+      "id": "39508",
+      "title": "קוצים",
+      "sourceTitle": "קוצים",
+      "author": "מיקה פרנקו",
+      "description": "כשהמורה האכפתית פוגשת אב קפוא-לב, נוצרת התנגשות שמאיימת להצית אש - בין אהבה לילד לבין אהבה אסורה שצומחת בין מבוגרים שבורים.",
+      "cover": "assets/covers/39508.jpg",
+      "url": "https://www.e-vrit.co.il/product/39508/%D7%A7%D7%95%D7%A6%D7%99%D7%9D",
+      "year": 2026,
+      "month": 4,
+      "pages": 365,
+      "categories": [
+        "רומן רומנטי",
+        "רומן אירוטי"
+      ],
+      "pricing": {
+        "digital": {
+          "price": 25,
+          "priceBefore": 35
+        }
+      },
+      "offers": {
+        "digital": [
+          {
+            "store": "עברית",
+            "price": 25,
+            "priceBefore": 35,
+            "url": "https://www.e-vrit.co.il/product/39508/%D7%A7%D7%95%D7%A6%D7%99%D7%9D"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010557"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 24,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/קוצים"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/קוצים"
+          }
+        ],
+        "print": [
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010557"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/קוצים"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/קוצים-160100000048"
+          }
+        ]
+      },
+      "sales": 294,
+      "reviews": {
+        "count": 36,
+        "average": 4.64
+      },
+      "themeColor": "#5B5048"
+    },
+    {
+      "id": "39908",
+      "title": "כוכבים רואים רק בחושך",
+      "sourceTitle": "הכוכבים 1 - כוכבים רואים רק בחושך",
+      "author": "מעיין גלעד",
+      "description": "שתי נשמות שבורות, עבר שרודף, ואהבה שמגיעה בדיוק כשהכול מתמוטט — כי לפעמים האור נמצא רק בחושך.",
+      "cover": "assets/covers/39908.jpg",
+      "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A",
+      "year": 2026,
+      "month": 5,
+      "pages": 361,
+      "categories": [
+        "רומן רומנטי",
+        "רומן אירוטי"
+      ],
+      "pricing": {
+        "digital": {
+          "price": 25,
+          "priceBefore": 35
+        },
+        "print": {
+          "price": 55,
+          "priceBefore": 68.6
+        },
+        "audio": {
+          "price": 35,
+          "priceBefore": null
+        }
+      },
+      "offers": {
+        "digital": [
+          {
+            "store": "עברית",
+            "price": 25,
+            "priceBefore": 35,
+            "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010569"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 20,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/כוכבים-רואים-רק-בחושך"
+          }
+        ],
+        "print": [
+          {
+            "store": "עברית",
+            "price": 55,
+            "priceBefore": 68.6,
+            "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010569"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/כוכבים-רואים-רק-בחושך-160100000079"
+          }
+        ],
+        "audio": [
+          {
+            "store": "עברית",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 29,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
+          }
+        ]
+      },
+      "sales": 374,
+      "reviews": {
+        "count": 50,
+        "average": 4.64
+      },
+      "themeColor": "#B5EDFE"
+    },
+    {
+      "id": "40126",
+      "title": "הטעם החמישי",
+      "sourceTitle": "הטעם החמישי",
+      "author": "רותם פלד",
+      "description": "תלמידת תיכון, שף מפורסם, ומטבח שבו הכללים נשרפים. סיפור על האיסור שהופך לדבר היחיד שמרגיש אמיתי.",
+      "cover": "assets/covers/40126.jpg",
+      "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99",
+      "year": 2026,
+      "month": 6,
+      "pages": 381,
+      "categories": [
+        "רומן רומנטי",
+        "רומן אירוטי"
+      ],
+      "pricing": {
+        "digital": {
+          "price": 25,
+          "priceBefore": 35
+        },
+        "print": {
+          "price": 55,
+          "priceBefore": 68.6
+        }
+      },
+      "offers": {
+        "digital": [
+          {
+            "store": "עברית",
+            "price": 25,
+            "priceBefore": 35,
+            "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 20,
+            "priceBefore": 35,
+            "url": "https://bbooks.co.il/book/הטעם-החמישי"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/הטעם-החמישי"
+          }
+        ],
+        "print": [
+          {
+            "store": "עברית",
+            "price": 55,
+            "priceBefore": 68.6,
+            "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/הטעם-החמישי"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/הטעם-החמישי-160100000062"
+          }
+        ]
+      },
+      "sales": 277,
+      "reviews": {
+        "count": 30,
+        "average": 4.4
+      },
+      "themeColor": "#4A4240"
+    }
+  ],
+  "stores": [
+    "עברית",
+    "ביבוקס",
+    "סטימצקי",
+    "צומת ספרים",
+    "אינדיבוק"
+  ]
+}
