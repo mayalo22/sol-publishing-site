@@ -197,7 +197,6 @@ for (const product of products) {
     categories: product.Categories?.map(category => category.Name) || [], pricing: evritPricing(product.ProductPricing),
     offers: await storeOffers(product, url, previous?.offers),
     bestsellers: bestsellerBadges(title, product.ProductName, bestsellerLists, previous?.bestsellers),
-    sales: Number(product.AllTimeOrders) || 0,
     reviews: { count: Number(product.CountReviews) || 0, average: Number(product.AvgReviews) || 0 },
     themeColor: product.ThemeColor || "#D88972"
   });

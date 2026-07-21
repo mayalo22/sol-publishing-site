@@ -38,7 +38,6 @@ function formatComparison(book) {
 
 function bookCard(book, index) {
   const reviewText = book.reviews?.count ? `${book.reviews.count} ביקורות` : "חדש בקטלוג";
-  const salesText = Number.isFinite(book.sales) ? `${book.sales.toLocaleString("he-IL")} קוראות רכשו` : "";
   const bestsellerBadges = (book.bestsellers || []).map(item => `<a class="bestseller-badge" href="${item.url}" target="_blank" rel="noopener">★ ${item.label}</a>`).join("");
   return `<article class="book-card reveal visible" style="--book-color:${book.themeColor || "#d88972"}">
     <div class="book-cover-shell">
@@ -52,7 +51,7 @@ function bookCard(book, index) {
       <p class="book-description">${book.description || "ספרות רומנטית ישראלית מבית הוצאת סול."}</p>
       <div class="rating-row">
         ${book.reviews?.average ? `<span><span class="rating-star">★</span> <strong>${book.reviews.average.toFixed(1)}</strong></span>` : ""}
-        <span>${reviewText}</span>${salesText ? `<span>${salesText}</span>` : ""}
+        <span>${reviewText}</span>
       </div>
       ${formatComparison(book)}
     </div>
