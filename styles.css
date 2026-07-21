@@ -1,13 +1,13 @@
 :root {
-  --ink: #291c2b;
-  --ink-soft: #3b2638;
-  --paper: #fbf4ea;
-  --white: #fffaf4;
-  --blue: #eca86e;
-  --blue-dark: #a84e55;
-  --coral: #d88972;
-  --gold: #eca86e;
-  --line: rgba(57, 35, 50, .14);
+  --ink: #48182f;
+  --ink-soft: #642143;
+  --paper: #fff3f7;
+  --white: #fffafd;
+  --blue: #f2a9c3;
+  --blue-dark: #b8326b;
+  --coral: #e86f9f;
+  --gold: #ffc0d5;
+  --line: rgba(103, 33, 69, .15);
   --serif: "Frank Ruhl Libre", Georgia, serif;
   --sans: "Heebo", Arial, sans-serif;
 }
@@ -24,7 +24,11 @@ button, input { font: inherit; }
 
 .site-header { position: absolute; inset: 0 0 auto; z-index: 20; min-height: 86px; padding: 0 clamp(1.25rem, 5vw, 5rem); display: flex; align-items: center; justify-content: space-between; gap: 2rem; color: #fff; border-bottom: 1px solid rgba(255,255,255,.14); }
 .brand { display: inline-flex; align-items: center; gap: .75rem; }
-.brand-logo { width: 168px; height: auto; }
+.brand-logo-wrap { position: relative; flex: 0 0 auto; width: 52px; height: 66px; overflow: hidden; border-radius: 9px; background: #fff; box-shadow: 0 8px 22px rgba(41,7,26,.18); }
+.brand-logo { position: absolute; top: -14px; left: 50%; width: 86px; max-width: none; height: 86px; transform: translateX(-50%); object-fit: contain; }
+.brand-title { display: flex; flex-direction: column; color: #fff; line-height: 1; }
+.brand-title strong { font: 700 1.2rem var(--serif); }
+.brand-title small { margin-top: .35rem; color: rgba(255,255,255,.72); font-size: .65rem; }
 .brand-symbol { position: relative; display: grid; place-items: center; width: 42px; aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; }
 .brand-symbol::before, .brand-symbol::after, .brand-symbol i::before, .brand-symbol i::after { content: ""; position: absolute; width: 1px; height: 8px; background: currentColor; left: 50%; top: -5px; transform-origin: 50% 26px; }
 .brand-symbol::after { transform: rotate(90deg); }
@@ -41,7 +45,7 @@ button, input { font: inherit; }
 .header-cta { padding: .72rem 1.1rem; border: 1px solid rgba(255,255,255,.7); border-radius: 999px; font-size: .82rem; transition: .2s ease; }
 .header-cta:hover { color: var(--ink); background: #fff; }
 
-.hero { position: relative; min-height: 760px; padding: 150px clamp(1.25rem, 6vw, 7rem) 80px; background: var(--ink); color: #fff; display: grid; grid-template-columns: minmax(0, 1fr) minmax(380px, .85fr); align-items: center; gap: clamp(2rem, 8vw, 9rem); isolation: isolate; overflow: hidden; }
+.hero { position: relative; min-height: 760px; padding: 150px clamp(1.25rem, 6vw, 7rem) 80px; background: radial-gradient(circle at 78% 25%, rgba(232,111,159,.25), transparent 34%), linear-gradient(135deg, #351124, var(--ink) 54%, #6d2048); color: #fff; display: grid; grid-template-columns: minmax(0, 1fr) minmax(380px, .85fr); align-items: center; gap: clamp(2rem, 8vw, 9rem); isolation: isolate; overflow: hidden; }
 .hero::before { content: "SOL"; position: absolute; left: -2vw; bottom: -8vw; z-index: -1; color: rgba(255,255,255,.025); font: 900 clamp(13rem, 30vw, 34rem)/.75 var(--sans); letter-spacing: -.08em; direction: ltr; }
 .hero::after { content: ""; position: absolute; width: 28rem; height: 28rem; border: 1px solid rgba(61,181,255,.16); border-radius: 50%; right: -12rem; top: 6rem; }
 .hero-glow { position: absolute; z-index: -1; width: 42rem; height: 42rem; right: 46%; top: 20%; background: radial-gradient(circle, rgba(61,181,255,.13), transparent 68%); }
@@ -54,8 +58,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2.2rem; }
 .button { display: inline-flex; min-height: 50px; padding: .85rem 1.35rem; align-items: center; justify-content: center; gap: .7rem; border-radius: 999px; font-weight: 600; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
 .button:hover { transform: translateY(-2px); }
-.button-primary { background: var(--blue); color: var(--ink); box-shadow: 0 14px 35px rgba(236,168,110,.22); }
-.button-primary:hover { background: #f4bd8e; }
+.button-primary { background: var(--blue); color: var(--ink); box-shadow: 0 14px 35px rgba(232,111,159,.25); }
+.button-primary:hover { background: #ffc1d6; }
 .button-ghost { color: #fff; border: 1px solid rgba(255,255,255,.26); }
 .button-ghost:hover { background: rgba(255,255,255,.07); }
 .button-light { background: var(--white); color: var(--ink); }
@@ -76,7 +80,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .hero-stamp { position: absolute; left: 0; bottom: 3rem; z-index: 8; width: 108px; aspect-ratio: 1; display: grid; place-items: center; padding: 1rem; text-align: center; color: var(--ink); background: var(--blue); border-radius: 50%; font: 700 .75rem/1.45 var(--sans); transform: rotate(-8deg); }
 @keyframes rotate { to { transform: rotate(360deg); } }
 
-.ticker { overflow: hidden; background: var(--blue); border-block: 1px solid var(--ink); }
+.ticker { overflow: hidden; background: linear-gradient(90deg, #ef8db2, #ffc0d5, #ef8db2); border-block: 1px solid var(--ink); }
 .ticker-track { width: max-content; padding: .9rem 0; display: flex; gap: 2rem; align-items: center; animation: ticker 34s linear infinite; font: 600 .9rem var(--sans); }
 .ticker-track i { font-style: normal; }
 @keyframes ticker { to { transform: translateX(50%); } }
@@ -94,7 +98,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .books-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2.2vw, 2rem); }
 .book-card { position: relative; min-width: 0; background: rgba(255,255,255,.56); border: 1px solid var(--line); overflow: hidden; transition: transform .3s ease, box-shadow .3s ease; }
 .book-card:hover { transform: translateY(-7px); box-shadow: 0 26px 60px rgba(16,24,36,.12); }
-.book-cover-shell { position: relative; aspect-ratio: 4/5; padding: 1.35rem 1.35rem 0; display: grid; place-items: end center; overflow: hidden; background: linear-gradient(145deg, color-mix(in srgb, var(--book-color) 28%, #f8f3eb), #e6e1d9); }
+.book-cover-shell { position: relative; aspect-ratio: 4/5; padding: 1.35rem 1.35rem 0; display: grid; place-items: end center; overflow: hidden; background: linear-gradient(145deg, color-mix(in srgb, var(--book-color) 24%, #fff0f6), #f3dce6); }
 .book-cover-shell::before { content: ""; position: absolute; width: 72%; aspect-ratio: 1; border-radius: 50%; background: color-mix(in srgb, var(--book-color) 35%, transparent); filter: blur(35px); }
 .book-cover { position: relative; z-index: 1; height: 94%; width: auto; max-width: 84%; object-fit: cover; object-position: center; box-shadow: -18px 22px 38px rgba(16,24,36,.27); border-radius: 2px 7px 7px 2px; }
 .book-number { position: absolute; top: .9rem; left: 1rem; z-index: 2; color: rgba(16,24,36,.45); font: 700 .72rem var(--sans); }
@@ -116,7 +120,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .price-row { position: relative; min-height: 43px; display: grid; grid-template-columns: 1fr auto auto; gap: .5rem; align-items: center; padding: .55rem .62rem; border-bottom: 1px solid var(--line); color: #594c56; font-size: .73rem; transition: background .2s ease; }
 .price-row:hover { background: #fff; }
 .price-row:last-child { border-bottom: 0; }
-.price-row.best-offer { margin: .3rem 0; border: 1px solid rgba(168,78,85,.35); border-radius: 9px; background: #fff5ee; color: var(--ink); }
+.price-row.best-offer { margin: .3rem 0; border: 1px solid rgba(184,50,107,.35); border-radius: 9px; background: #fff0f6; color: var(--ink); }
 .store-name { font-weight: 600; }
 .offer-price { display: flex; align-items: baseline; gap: .35rem; direction: ltr; }
 .offer-price del { color: #9a8d95; font-size: .62rem; }
@@ -126,9 +130,10 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .sync-status { margin: 2rem 0 0; color: #6c747d; font-size: .75rem; text-align: center; }
 .empty-state { padding: 3rem; text-align: center; color: #67717b; }
 
-.manifesto { position: relative; padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 8vw, 10rem); background: var(--ink-soft); color: #fff; display: grid; grid-template-columns: .35fr 1.25fr .7fr; gap: clamp(2rem, 6vw, 7rem); align-items: center; overflow: hidden; }
+.manifesto { position: relative; padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 8vw, 10rem); background: linear-gradient(135deg, var(--ink-soft), #7e2956); color: #fff; display: grid; grid-template-columns: .45fr 1.25fr .7fr; gap: clamp(2rem, 6vw, 7rem); align-items: center; overflow: hidden; }
 .manifesto::after { content: ""; position: absolute; inset: auto -10rem -18rem auto; width: 35rem; height: 35rem; border: 1px solid rgba(61,181,255,.2); border-radius: 50%; }
-.manifesto-mark { color: var(--blue); font: 500 clamp(8rem, 18vw, 18rem)/1 var(--serif); opacity: .9; }
+.manifesto-logo-card { position: relative; width: min(100%, 220px); aspect-ratio: .72; justify-self: center; overflow: hidden; border-radius: 20px; background: #fff; box-shadow: 0 28px 65px rgba(35,6,22,.28); }
+.manifesto-logo-card img { position: absolute; width: 142%; max-width: none; left: 50%; top: -18%; transform: translateX(-50%); }
 .manifesto h2 { margin: 0; font-size: clamp(2.5rem, 4.5vw, 5rem); line-height: 1.04; }
 .manifesto-copy > p:last-child { max-width: 700px; color: rgba(255,255,255,.65); line-height: 1.85; }
 .manifesto-list { display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,.15); }
@@ -136,7 +141,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .manifesto-list b { display: inline-block; width: 2.5rem; color: var(--blue); font-size: .7rem; }
 
 .updates-section { padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 7rem); }
-.updates-card { position: relative; padding: clamp(2rem, 6vw, 5rem); background: var(--blue); display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 2rem; align-items: center; overflow: hidden; }
+.updates-card { position: relative; padding: clamp(2rem, 6vw, 5rem); background: linear-gradient(135deg, #f19aba, #ffd0df); display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 2rem; align-items: center; overflow: hidden; }
 .updates-card::before { content: ""; position: absolute; width: 22rem; aspect-ratio: 1; border: 1px solid rgba(16,24,36,.2); border-radius: 50%; left: -8rem; top: -9rem; }
 .updates-card h2 { margin: 0; font-size: clamp(2.4rem, 4.2vw, 4.7rem); line-height: .98; }
 .updates-card > p { line-height: 1.75; }
@@ -144,7 +149,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 footer { padding: 2rem clamp(1.25rem, 6vw, 7rem); display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; background: var(--ink); color: rgba(255,255,255,.65); font-size: .78rem; border-top: 1px solid rgba(255,255,255,.12); }
 .footer-brand { color: #fff; }
 .footer-brand .brand-symbol { width: 34px; }
-.footer-brand .brand-logo { width: 145px; }
+.footer-brand .brand-logo-wrap { width: 46px; height: 58px; }
+.footer-brand .brand-logo { width: 76px; height: 76px; top: -12px; }
 .social-links { display: flex; gap: 1rem; align-items: center; }
 .social-links a:hover { color: var(--blue); }
 
@@ -165,7 +171,9 @@ footer { padding: 2rem clamp(1.25rem, 6vw, 7rem); display: flex; justify-content
   .site-header { min-height: 72px; padding-inline: 1rem; }
   .site-header nav { display: none; }
   .header-cta { font-size: .72rem; padding: .62rem .8rem; }
-  .brand-copy strong { font-size: 1.05rem; }
+  .brand-title { display: none; }
+  .brand-logo-wrap { width: 44px; height: 56px; }
+  .brand-logo { width: 74px; height: 74px; top: -12px; }
   .hero { min-height: auto; padding: 115px 1.25rem 4rem; grid-template-columns: 1fr; gap: 2.5rem; }
   .hero h1 { font-size: clamp(3.2rem, 16vw, 5.6rem); }
   .hero-stage { min-height: 390px; order: 2; }
@@ -191,7 +199,7 @@ footer { padding: 2rem clamp(1.25rem, 6vw, 7rem); display: flex; justify-content
   .rating-row { flex-wrap: wrap; gap: .35rem .65rem; }
   .price-row { grid-template-columns: 1fr auto auto; }
   .manifesto { padding-inline: 1.25rem; grid-template-columns: 1fr; }
-  .manifesto-mark { position: absolute; left: -1rem; top: 0; opacity: .08; }
+  .manifesto-logo-card { width: 150px; }
   .manifesto-list { grid-column: auto; }
   .updates-card { grid-template-columns: 1fr; }
   .updates-card .button { grid-column: auto; justify-self: stretch; }
