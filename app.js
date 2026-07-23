@@ -1,5 +1,7 @@
 const state = { books: [], query: "", category: "הכול" };
 
+const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+
 const money = value => new Intl.NumberFormat("he-IL", {
   style: "currency",
   currency: "ILS",
@@ -39,13 +41,17 @@ function formatComparison(book) {
 function bookCard(book, index) {
   const reviewText = book.reviews?.count ? `${book.reviews.count} ביקורות` : "חדש בקטלוג";
   const bestsellerBadges = (book.bestsellers || []).map(item => `<a class="bestseller-badge" href="${item.url}" target="_blank" rel="noopener">★ ${item.label}</a>`).join("");
+  const featuredReviews = (book.featuredReviews || []).map(review => `<figure class="reader-review">
+    <blockquote>“${escapeHtml(review.excerpt)}”</blockquote>
+    <figcaption><span>${"★".repeat(Math.max(0, Math.min(5, review.rating || 0)))}</span> ${escapeHtml(review.nickname)}</figcaption>
+  </figure>`).join("");
   return `<article class="book-card reveal visible" style="--book-color:${book.themeColor || "#d88972"}">
     <div class="book-cover-shell">
       <span class="book-number">${String(index + 1).padStart(2, "0")}</span>
       <img class="book-cover" src="${book.cover}" alt="עטיפת ${book.title}" loading="lazy">
     </div>
     <div class="book-body">
-      <p class="book-author">${book.author}</p>
+      <p class="book-author"><a href="author.html?name=${encodeURIComponent(book.author)}" aria-label="לעמוד הסופרת ${escapeHtml(book.author)}">${escapeHtml(book.author)}</a></p>
       ${bestsellerBadges ? `<div class="book-bestsellers" aria-label="הופעה ברשימות רבי מכר">${bestsellerBadges}</div>` : ""}
       <h3>${book.title}</h3>
       <p class="book-description">${book.description || "ספרות רומנטית ישראלית מבית הוצאת סול."}</p>
@@ -53,6 +59,7 @@ function bookCard(book, index) {
         ${book.reviews?.average ? `<span><span class="rating-star">★</span> <strong>${book.reviews.average.toFixed(1)}</strong></span>` : ""}
         <span>${reviewText}</span>
       </div>
+      ${featuredReviews ? `<details class="featured-reviews"><summary>קוראות מספרות · ${book.featuredReviews.length} ביקורות נבחרות</summary><div class="reader-reviews">${featuredReviews}</div><a class="reviews-source" href="${book.url}" target="_blank" rel="noopener">לכל הביקורות באתר עברית ↗</a></details>` : ""}
       ${formatComparison(book)}
     </div>
   </article>`;
