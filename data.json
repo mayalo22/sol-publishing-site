@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-23T18:43:13.359Z",
+  "updatedAt": "2026-07-23T18:54:40.295Z",
   "sourceUrl": "https://www.e-vrit.co.il/Publisher/3051/%D7%A1%D7%95%D7%9C",
   "books": [
     {
@@ -32,16 +32,16 @@
             "url": "https://www.e-vrit.co.il/product/31855/%D7%9E%D7%9C%D7%90%D7%9A-%D7%A9%D7%9C%D7%99"
           },
           {
-            "store": "סטימצקי",
-            "price": 32,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010346"
-          },
-          {
             "store": "ביבוקס",
             "price": 22,
             "priceBefore": 32,
             "url": "https://bbooks.co.il/book/מלאך-שלי"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 32,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010346"
           },
           {
             "store": "אינדיבוק",
@@ -228,16 +228,16 @@
             "url": "https://www.steimatzky.co.il/012010525"
           },
           {
-            "store": "אינדיבוק",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://indiebook.co.il/shop/בין-בריחה-לאהבה"
-          },
-          {
             "store": "ביבוקס",
             "price": 24,
             "priceBefore": 35,
             "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
+          },
+          {
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/בין-בריחה-לאהבה"
           }
         ],
         "print": [
@@ -248,16 +248,16 @@
             "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
           },
           {
-            "store": "צומת ספרים",
-            "price": 98,
-            "priceBefore": null,
-            "url": "https://www.booknet.co.il/מוצרים/בין-בריחה-לאהבה-1-160100000024"
-          },
-          {
             "store": "ביבוקס",
             "price": 44,
             "priceBefore": 98,
             "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/בין-בריחה-לאהבה-1-160100000024"
           }
         ]
       },
@@ -352,16 +352,16 @@
             "url": "https://www.steimatzky.co.il/012010555"
           },
           {
-            "store": "צומת ספרים",
-            "price": 98,
-            "priceBefore": null,
-            "url": "https://www.booknet.co.il/מוצרים/אאמין-לך-1-160100000031"
-          },
-          {
             "store": "ביבוקס",
             "price": 40,
             "priceBefore": 98,
             "url": "https://bbooks.co.il/book/אאמין-לך"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/אאמין-לך-1-160100000031"
           }
         ]
       },
@@ -668,16 +668,16 @@
             "url": "https://www.steimatzky.co.il/012010569"
           },
           {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
-          },
-          {
             "store": "צומת ספרים",
             "price": 98,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/כוכבים-רואים-רק-בחושך-160100000079"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
           }
         ],
         "audio": [
@@ -695,7 +695,13 @@
           }
         ]
       },
-      "bestsellers": [],
+      "bestsellers": [
+        {
+          "store": "ביבוקס",
+          "label": "רב־מכר בביבוקס",
+          "url": "https://bbooks.co.il/"
+        }
+      ],
       "featuredReviews": [
         {
           "id": "590615",
@@ -803,7 +809,7 @@
         {
           "store": "ביבוקס",
           "label": "רב־מכר בביבוקס",
-          "url": "https://bbooks.co.il/רבי-מכר"
+          "url": "https://bbooks.co.il/"
         }
       ],
       "featuredReviews": [
@@ -845,13 +851,13 @@
     },
     {
       "store": "ביבוקס",
-      "url": "https://bbooks.co.il/רבי-מכר"
+      "url": "https://bbooks.co.il/"
     },
     {
       "store": "אינדיבוק",
       "url": "https://indiebook.co.il/31/רבי-מכר"
     }
   ],
-  "pricesUpdatedAt": "2026-07-23T18:43:13.359Z",
-  "bestsellersUpdatedAt": "2026-07-23T18:40:30.777Z"
+  "pricesUpdatedAt": "2026-07-23T18:54:40.295Z",
+  "bestsellersUpdatedAt": "2026-07-23T18:54:40.295Z"
 }

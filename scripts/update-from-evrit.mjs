@@ -8,7 +8,7 @@ const refreshBestsellers = process.env.REFRESH_BESTSELLERS !== "false";
 
 const bestsellerSources = [
   { store: "עברית", url: "https://www.e-vrit.co.il/group/2572/רבי-המכר-של-השבוע" },
-  { store: "ביבוקס", url: "https://bbooks.co.il/רבי-מכר" },
+  { store: "ביבוקס", url: "https://bbooks.co.il/", section: true },
   { store: "אינדיבוק", url: "https://indiebook.co.il/31/רבי-מכר" }
 ];
 
