@@ -22,6 +22,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Refresh catalog and compare stores
+        env:
+          CURRENT_DATA_URL: https://mayalo22.github.io/sol-publishing-site/data.json
+          REFRESH_BESTSELLERS: ${{ github.event_name != 'schedule' }}
         run: node scripts/update-from-evrit.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,56 @@
+name: Update Sol bestseller lists and deploy
+
+on:
+  schedule:
+    - cron: "0 21,22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      should-deploy: ${{ steps.clock.outputs.should-deploy }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check midnight in Israel
+        id: clock
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$(TZ=Asia/Jerusalem date +%H)" = "00" ]; then
+            echo "should-deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should-deploy=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Refresh bestseller lists
+        if: steps.clock.outputs.should-deploy == 'true'
+        env:
+          CURRENT_DATA_URL: https://mayalo22.github.io/sol-publishing-site/data.json
+          REFRESH_BESTSELLERS: "true"
+        run: node scripts/update-from-evrit.mjs
+      - uses: actions/configure-pages@v5
+        if: steps.clock.outputs.should-deploy == 'true'
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.clock.outputs.should-deploy == 'true'
+        with:
+          path: .
+
+  deploy:
+    if: needs.build.outputs.should-deploy == 'true'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

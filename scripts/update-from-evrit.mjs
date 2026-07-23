@@ -4,6 +4,7 @@ const dataUrl = new URL("../data.json", import.meta.url);
 const coversDir = new URL("../assets/covers/", import.meta.url);
 const publisherUrl = "https://www.e-vrit.co.il/Publisher/3051/%D7%A1%D7%95%D7%9C";
 const headers = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/138 Safari/537.36", "accept-language": "he-IL,he;q=0.9,en;q=0.7" };
+const refreshBestsellers = process.env.REFRESH_BESTSELLERS !== "false";
 
 const bestsellerSources = [
   { store: "עברית", url: "https://www.e-vrit.co.il/group/2572/רבי-המכר-של-השבוע" },
@@ -126,6 +127,13 @@ function parseFormats(html, title, store) {
   return result;
 }
 
+function parseBooknet(html, title) {
+  const text = productText(html, title);
+  const match = text.match(/מחיר באתר\s*:?\s*(\d+(?:\.\d+)?)\s*₪/)
+    || text.match(/(?:מחיר מכירה מודפס|מחיר נוכחי)\D{0,25}(\d+(?:\.\d+)?)\s*₪/);
+  return match ? { print: { store: "צומת ספרים", price: Number(match[1]), priceBefore: null } } : {};
+}
+
 function addOffer(offers, format, offer, url) {
   if (!offer?.price || !url) return;
   (offers[format] ||= []).push({ ...offer, url });
@@ -147,11 +155,7 @@ async function storeOffers(product, evritUrl, previous = {}) {
       }
       return parsed;
     }},
-    ...(sources.booknet ? [{ key: "booknet", name: "צומת ספרים", url: sources.booknet, parse: (html) => {
-      const parsed = parseFormats(html, title, "צומת ספרים");
-      if (!parsed.print) { const text = productText(html, title); const match = text.match(/(?:מחיר באתר|מחיר מכירה מודפס|מחיר נוכחי)\D{0,25}(\d+(?:\.\d+)?)/); if (match) parsed.print = { store: "צומת ספרים", price: Number(match[1]), priceBefore: null }; }
-      return parsed;
-    }}] : []),
+    ...(sources.booknet ? [{ key: "booknet", name: "צומת ספרים", url: sources.booknet, parse: (html) => parseBooknet(html, title) }] : []),
     ...(sources.steimatzky ? [{ key: "steimatzky", name: "סטימצקי", url: sources.steimatzky, parse: parseSteimatzky }] : [])
   ];
   await Promise.all(stores.map(async source => {
@@ -177,11 +181,25 @@ async function saveCover(product) {
   catch (error) { console.warn(`Keeping remote cover for ${product.ProductName}: ${error.message}`); return remote; }
 }
 
-const existing = JSON.parse(await readFile(dataUrl, "utf8"));
+async function loadExistingData() {
+  const currentDataUrl = process.env.CURRENT_DATA_URL;
+  if (currentDataUrl) {
+    try {
+      const separator = currentDataUrl.includes("?") ? "&" : "?";
+      const response = await fetchResource(`${currentDataUrl}${separator}ts=${Date.now()}`);
+      return await response.json();
+    } catch (error) {
+      console.warn(`Could not load the currently published data: ${error.message}`);
+    }
+  }
+  return JSON.parse(await readFile(dataUrl, "utf8"));
+}
+
+const existing = await loadExistingData();
 await mkdir(coversDir, { recursive: true });
 const products = extractProducts(await (await fetchResource(publisherUrl)).text());
 if (!products.length) throw new Error("The publisher page returned an empty catalog");
-const bestsellerLists = await loadBestsellerLists();
+const bestsellerLists = refreshBestsellers ? await loadBestsellerLists() : null;
 
 const books = [];
 for (const product of products) {
@@ -196,13 +214,14 @@ for (const product of products) {
     pages: product.NumOfPages ? Number(product.NumOfPages) : null,
     categories: product.Categories?.map(category => category.Name) || [], pricing: evritPricing(product.ProductPricing),
     offers: await storeOffers(product, url, previous?.offers),
-    bestsellers: bestsellerBadges(title, product.ProductName, bestsellerLists, previous?.bestsellers),
+    bestsellers: refreshBestsellers ? bestsellerBadges(title, product.ProductName, bestsellerLists, previous?.bestsellers) : (previous?.bestsellers || []),
     reviews: { count: Number(product.CountReviews) || 0, average: Number(product.AvgReviews) || 0 },
     themeColor: product.ThemeColor || "#D88972"
   });
 }
 
 books.sort((a, b) => (a.year - b.year) || (a.month - b.month) || (Number(a.id) - Number(b.id)));
-const next = { ...existing, updatedAt: new Date().toISOString(), sourceUrl: publisherUrl, stores: ["עברית", "ביבוקס", "סטימצקי", "צומת ספרים", "אינדיבוק"], bestsellerSources: bestsellerSources.map(({ store, url }) => ({ store, url })), books };
+const updatedAt = new Date().toISOString();
+const next = { ...existing, updatedAt, pricesUpdatedAt: updatedAt, bestsellersUpdatedAt: refreshBestsellers ? updatedAt : (existing.bestsellersUpdatedAt || existing.updatedAt), sourceUrl: publisherUrl, stores: ["עברית", "ביבוקס", "סטימצקי", "צומת ספרים", "אינדיבוק"], bestsellerSources: bestsellerSources.map(({ store, url }) => ({ store, url })), books };
 await writeFile(dataUrl, `${JSON.stringify(next, null, 2)}\n`, "utf8");
-console.log(`Updated ${books.length} books, compared five stores and checked bestseller lists at ${next.updatedAt}`);
+console.log(`Updated ${books.length} books and compared five stores${refreshBestsellers ? " including bestseller lists" : " while preserving the latest bestseller results"} at ${next.updatedAt}`);
