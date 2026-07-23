@@ -9,7 +9,9 @@ const profiles = {
       { label: "אינסטגרם", url: "https://www.instagram.com/maayan_gilad_writing/" },
       { label: "פייסבוק", url: "https://www.facebook.com/mayalo/" },
       { label: "טיקטוק", url: "https://www.tiktok.com/@maayan_gilad_writing" },
-      { label: "האתר האישי", url: "https://mayalo22.github.io/" }
+      { label: "האתר האישי", url: "https://mayalo22.github.io/" },
+      { label: "המשחק: כוכבים רואים רק בחושך", url: "https://kochavim-bachoshech-game.mayalo.chatgpt.site/" },
+      { label: "קבוצת הוואטסאפ", url: "https://chat.whatsapp.com/LPQ618mz1UsBhfV7orMoNE" }
     ]
   },
   "סטלה": { intro: "סופרת רומנטית ישראלית מבית הוצאת סול, הכותבת על בריחה מן העבר, התחלות חדשות והלב שאי אפשר להשתיק." },
