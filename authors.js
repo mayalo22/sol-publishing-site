@@ -2,7 +2,16 @@ const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, character =>
 
 const profiles = {
   "אריאלה הראש": { intro: "סופרת ישראלית הכותבת רומנים עכשוויים שבהם אהבה, זהות והתמודדות נפגשות ברגעים שמשנים חיים." },
-  "מעיין גלעד": { intro: "סופרת ישראלית מבית הוצאת סול. ספריה עוסקים באהבה עוצמתית, בחירה, משפחה והיכולת למצוא אור גם מתוך כאב.", direct: [{ label: "העמוד הרשמי", url: "https://linktr.ee/maayan_gilad" }] },
+  "מעיין גלעד": {
+    intro: "סופרת ישראלית מבית הוצאת סול. ספריה עוסקים באהבה עוצמתית, בחירה, משפחה והיכולת למצוא אור גם מתוך כאב.",
+    photo: "assets/authors/maayan-gilad.png",
+    links: [
+      { label: "אינסטגרם", url: "https://www.instagram.com/maayan_gilad_writing/" },
+      { label: "פייסבוק", url: "https://www.facebook.com/mayalo/" },
+      { label: "טיקטוק", url: "https://www.tiktok.com/@maayan_gilad_writing" },
+      { label: "האתר האישי", url: "https://mayalo22.github.io/" }
+    ]
+  },
   "סטלה": { intro: "סופרת רומנטית ישראלית מבית הוצאת סול, הכותבת על בריחה מן העבר, התחלות חדשות והלב שאי אפשר להשתיק." },
   "רינטה אונגר": { intro: "סופרת רומנטית ישראלית מבית הוצאת סול, היוצרת סיפורים על אמון, סודות וקשרים שנבחנים ברגעים המורכבים ביותר." },
   "מיקה פרנקו": { intro: "סופרת רומנטית ישראלית מבית הוצאת סול, הכותבת על דמויות פצועות, גבולות שנשברים ואהבה הצומחת במקומות לא צפויים." },
@@ -10,8 +19,7 @@ const profiles = {
 };
 
 const initials = name => name.split(/\s+/).map(part => part[0]).join("").slice(0, 2);
-const socialLinks = name => [
-  ...(profiles[name]?.direct || []),
+const socialLinks = name => profiles[name]?.links || [
   { label: "Instagram", url: `https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(`${name} סופרת`)}` },
   { label: "TikTok", url: `https://www.tiktok.com/search?q=${encodeURIComponent(`${name} סופרת`)}` }
 ];
@@ -38,7 +46,10 @@ async function renderAuthor(main) {
   if (!books.length) { main.innerHTML = `<section class="inner-hero"><h1>הסופרת לא נמצאה</h1><p><a href="authors.html">חזרה לכל הסופרות</a></p></section>`; return; }
   document.title = `${name} | הוצאת סול`;
   const years = books.map(book => Number(book.year)).filter(Boolean);
-  main.innerHTML = `<section class="inner-hero"><p class="eyebrow">סופרת בהוצאת סול</p><h1>${escapeHtml(name)}</h1></section><section class="author-profile"><div class="author-monogram" aria-hidden="true">${escapeHtml(initials(name))}</div><div><h2>נעים להכיר</h2><p class="author-bio">${escapeHtml(profiles[name]?.intro || "סופרת ישראלית מבית הוצאת סול.")}</p><div class="author-stats"><span>${books.length} ${books.length === 1 ? "ספר" : "ספרים"} בסול</span>${years.length ? `<span>בקטלוג מאז ${Math.min(...years)}</span>` : ""}</div><div class="author-socials" aria-label="קישורים לרשתות החברתיות של ${escapeHtml(name)}">${socialLinks(name).map(link => `<a href="${link.url}" target="_blank" rel="noopener">${escapeHtml(link.label)} ↗</a>`).join("")}</div></div></section><section class="author-books"><h2>הספרים של ${escapeHtml(name)}</h2><div class="author-books-grid">${books.map(authorBook).join("")}</div></section>`;
+  const portrait = profiles[name]?.photo
+    ? `<img class="author-photo" src="${profiles[name].photo}" alt="${escapeHtml(name)}" loading="eager">`
+    : `<div class="author-monogram" aria-hidden="true">${escapeHtml(initials(name))}</div>`;
+  main.innerHTML = `<section class="inner-hero"><p class="eyebrow">סופרת בהוצאת סול</p><h1>${escapeHtml(name)}</h1></section><section class="author-profile">${portrait}<div><h2>נעים להכיר</h2><p class="author-bio">${escapeHtml(profiles[name]?.intro || "סופרת ישראלית מבית הוצאת סול.")}</p><div class="author-stats"><span>${books.length} ${books.length === 1 ? "ספר" : "ספרים"} בסול</span>${years.length ? `<span>בקטלוג מאז ${Math.min(...years)}</span>` : ""}</div><div class="author-socials" aria-label="קישורים לרשתות החברתיות של ${escapeHtml(name)}">${socialLinks(name).map(link => `<a href="${link.url}" target="_blank" rel="noopener">${escapeHtml(link.label)} ↗</a>`).join("")}</div></div></section><section class="author-books"><h2>הספרים של ${escapeHtml(name)}</h2><div class="author-books-grid">${books.map(authorBook).join("")}</div></section>`;
 }
 
 const directory = document.querySelector("#authors-directory");
