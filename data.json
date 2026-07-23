@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-23T18:31:55.151Z",
+  "updatedAt": "2026-07-23T18:43:13.359Z",
   "sourceUrl": "https://www.e-vrit.co.il/Publisher/3051/%D7%A1%D7%95%D7%9C",
   "books": [
     {
@@ -32,6 +32,12 @@
             "url": "https://www.e-vrit.co.il/product/31855/%D7%9E%D7%9C%D7%90%D7%9A-%D7%A9%D7%9C%D7%99"
           },
           {
+            "store": "סטימצקי",
+            "price": 32,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010346"
+          },
+          {
             "store": "ביבוקס",
             "price": 22,
             "priceBefore": 32,
@@ -42,12 +48,6 @@
             "price": 32,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/מלאך-שלי"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 32,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010346"
           }
         ],
         "print": [
@@ -60,6 +60,24 @@
         ]
       },
       "bestsellers": [],
+      "featuredReviews": [
+        {
+          "id": "328230",
+          "nickname": "יונית",
+          "rating": 5,
+          "excerpt": "אם יכולתי ********** כוכבים. הנאה צרופה של סיפור אהבה קצבי, מתוק ומרתק…",
+          "date": "04/05/2024",
+          "url": "https://www.e-vrit.co.il/product/31855/%D7%9E%D7%9C%D7%90%D7%9A-%D7%A9%D7%9C%D7%99"
+        },
+        {
+          "id": "507859",
+          "nickname": "yuval_bookss22 - האינסטגרם שלי",
+          "rating": 5,
+          "excerpt": "דבר ראשון אמאלה ואבאלה. היו כל כך הרבה דברים שמה זה לא…",
+          "date": "01/11/2025",
+          "url": "https://www.e-vrit.co.il/product/31855/%D7%9E%D7%9C%D7%90%D7%9A-%D7%A9%D7%9C%D7%99"
+        }
+      ],
       "reviews": {
         "count": 141,
         "average": 4.37
@@ -100,10 +118,10 @@
             "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
           },
           {
-            "store": "אינדיבוק",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://indiebook.co.il/shop/לא-אוותר-לעולם"
+            "store": "סטימצקי",
+            "price": 27,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010524"
           },
           {
             "store": "ביבוקס",
@@ -112,10 +130,10 @@
             "url": "https://bbooks.co.il/book/לא-אוותר-לעולם"
           },
           {
-            "store": "סטימצקי",
-            "price": 27,
-            "priceBefore": 35,
-            "url": "https://www.steimatzky.co.il/012010524"
+            "store": "אינדיבוק",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://indiebook.co.il/shop/לא-אוותר-לעולם"
           }
         ],
         "print": [
@@ -126,16 +144,16 @@
             "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
           },
           {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/לא-אוותר-לעולם"
-          },
-          {
             "store": "סטימצקי",
             "price": 69,
             "priceBefore": 88.2,
             "url": "https://www.steimatzky.co.il/012010524"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/לא-אוותר-לעולם"
           },
           {
             "store": "צומת ספרים",
@@ -146,6 +164,24 @@
         ]
       },
       "bestsellers": [],
+      "featuredReviews": [
+        {
+          "id": "526451",
+          "nickname": "TAL ON📚",
+          "rating": 5,
+          "excerpt": "לא אוותר לעולם / מעיין גלעד. ספר יפהפה 😍 ספר שני מהמם…",
+          "date": "27/12/2025",
+          "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
+        },
+        {
+          "id": "526122",
+          "nickname": "הדר",
+          "rating": 5,
+          "excerpt": "זה ספר שקראתי בנשימה אחת. הכתיבה מאוד קצבית, מלאה בהתרחשויות וברגש, ולא…",
+          "date": "26/12/2025",
+          "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
+        }
+      ],
       "reviews": {
         "count": 83,
         "average": 4.12
@@ -186,10 +222,10 @@
             "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
           },
           {
-            "store": "ביבוקס",
-            "price": 24,
+            "store": "סטימצקי",
+            "price": 27,
             "priceBefore": 35,
-            "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
+            "url": "https://www.steimatzky.co.il/012010525"
           },
           {
             "store": "אינדיבוק",
@@ -198,10 +234,10 @@
             "url": "https://indiebook.co.il/shop/בין-בריחה-לאהבה"
           },
           {
-            "store": "סטימצקי",
-            "price": 27,
+            "store": "ביבוקס",
+            "price": 24,
             "priceBefore": 35,
-            "url": "https://www.steimatzky.co.il/012010525"
+            "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
           }
         ],
         "print": [
@@ -212,20 +248,38 @@
             "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
           },
           {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
-          },
-          {
             "store": "צומת ספרים",
             "price": 98,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/בין-בריחה-לאהבה-1-160100000024"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 44,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
           }
         ]
       },
       "bestsellers": [],
+      "featuredReviews": [
+        {
+          "id": "529939",
+          "nickname": "TAL Books 📚",
+          "rating": 5,
+          "excerpt": "בין בריחה לאהבה/ סטלה🌟 ״ החיים הם הדברים הקטנים שגורמים לך לחייך…",
+          "date": "03/01/2026",
+          "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
+        },
+        {
+          "id": "529454",
+          "nickname": "גולדה",
+          "rating": 5,
+          "excerpt": "סיפור מרגש מאוד מהסיפור הזה אנחנו מבינים גם שהעבר וההווה נפגשים,וזה עדיין…",
+          "date": "02/01/2026",
+          "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
+        }
+      ],
       "reviews": {
         "count": 54,
         "average": 4.5
@@ -266,6 +320,12 @@
             "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A"
           },
           {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010555"
+          },
+          {
             "store": "ביבוקס",
             "price": 25,
             "priceBefore": 35,
@@ -276,12 +336,6 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/אאמין-לך"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010555"
           }
         ],
         "print": [
@@ -292,10 +346,10 @@
             "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A"
           },
           {
-            "store": "ביבוקס",
-            "price": 40,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/אאמין-לך"
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010555"
           },
           {
             "store": "צומת ספרים",
@@ -304,14 +358,32 @@
             "url": "https://www.booknet.co.il/מוצרים/אאמין-לך-1-160100000031"
           },
           {
-            "store": "סטימצקי",
-            "price": 69,
-            "priceBefore": 88.2,
-            "url": "https://www.steimatzky.co.il/012010555"
+            "store": "ביבוקס",
+            "price": 40,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/אאמין-לך"
           }
         ]
       },
       "bestsellers": [],
+      "featuredReviews": [
+        {
+          "id": "574782",
+          "nickname": "אני",
+          "rating": 5,
+          "excerpt": "שילוב מעולה בין רומנטיקה למתח שפשוט אי אפשר להניח מהיד. הקצב מהיר,…",
+          "date": "25/04/2026",
+          "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A"
+        },
+        {
+          "id": "589448",
+          "nickname": "אושרת",
+          "rating": 5,
+          "excerpt": "סיימתי את \"אאמין לך\" של רינטה אונגר ואני עדיין בתוך זה 😮‍🔥…",
+          "date": "03/06/2026",
+          "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A"
+        }
+      ],
       "reviews": {
         "count": 58,
         "average": 4.41
@@ -352,6 +424,12 @@
             "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99"
           },
           {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010556"
+          },
+          {
             "store": "ביבוקס",
             "price": 25,
             "priceBefore": 35,
@@ -362,12 +440,6 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/הדרקון-היהודי"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010556"
           }
         ],
         "print": [
@@ -376,6 +448,12 @@
             "price": 55,
             "priceBefore": 68.6,
             "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010556"
           },
           {
             "store": "ביבוקס",
@@ -388,16 +466,28 @@
             "price": 98,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/הדרקון-היהודי-160100000055"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 69,
-            "priceBefore": 88.2,
-            "url": "https://www.steimatzky.co.il/012010556"
           }
         ]
       },
       "bestsellers": [],
+      "featuredReviews": [
+        {
+          "id": "575505",
+          "nickname": "TAL Books 📚",
+          "rating": 5,
+          "excerpt": "הדרקון היהודי / אריאלה הראש🐉❤️‍🔥 ״ביפן ובכלל בתרבות המיסטית, הדרקון אינו מפלצת.…",
+          "date": "26/04/2026",
+          "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99"
+        },
+        {
+          "id": "574447",
+          "nickname": "G.H",
+          "rating": 5,
+          "excerpt": "\"הדרקון היהודי\" הוא ספר סוחף, מרגש ומלא נשמה. מהעמוד הראשון נשאבתי לעלילה…",
+          "date": "24/04/2026",
+          "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99"
+        }
+      ],
       "reviews": {
         "count": 42,
         "average": 4.4
@@ -438,6 +528,12 @@
             "url": "https://www.e-vrit.co.il/product/39508/%D7%A7%D7%95%D7%A6%D7%99%D7%9D"
           },
           {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010557"
+          },
+          {
             "store": "ביבוקס",
             "price": 24,
             "priceBefore": 35,
@@ -448,12 +544,6 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/קוצים"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010557"
           }
         ],
         "print": [
@@ -462,6 +552,12 @@
             "price": 55,
             "priceBefore": 68.6,
             "url": "https://www.e-vrit.co.il/product/39508/%D7%A7%D7%95%D7%A6%D7%99%D7%9D"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010557"
           },
           {
             "store": "ביבוקס",
@@ -474,16 +570,28 @@
             "price": 98,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/קוצים-160100000048"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 69,
-            "priceBefore": 88.2,
-            "url": "https://www.steimatzky.co.il/012010557"
           }
         ]
       },
       "bestsellers": [],
+      "featuredReviews": [
+        {
+          "id": "581278",
+          "nickname": "TAL Books 📚",
+          "rating": 5,
+          "excerpt": "קוצים / מיקה פרנקו 🥰וואו ספר מהמם שלא ניתן להפסיק לקרוא 😍פשוט…",
+          "date": "13/05/2026",
+          "url": "https://www.e-vrit.co.il/product/39508/%D7%A7%D7%95%D7%A6%D7%99%D7%9D"
+        },
+        {
+          "id": "597524",
+          "nickname": "גולדה",
+          "rating": 5,
+          "excerpt": "אמאאאא. אני מאוהבת באדם ודיאנה .אבל יותר מהם מאוהבת בנח. איזה ילד…",
+          "date": "22/06/2026",
+          "url": "https://www.e-vrit.co.il/product/39508/%D7%A7%D7%95%D7%A6%D7%99%D7%9D"
+        }
+      ],
       "reviews": {
         "count": 36,
         "average": 4.64
@@ -528,6 +636,12 @@
             "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
           },
           {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010569"
+          },
+          {
             "store": "ביבוקס",
             "price": 20,
             "priceBefore": 35,
@@ -538,12 +652,6 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/כוכבים-רואים-רק-בחושך"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010569"
           }
         ],
         "print": [
@@ -552,6 +660,12 @@
             "price": 55,
             "priceBefore": 68.6,
             "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010569"
           },
           {
             "store": "ביבוקס",
@@ -564,12 +678,6 @@
             "price": 98,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/כוכבים-רואים-רק-בחושך-160100000079"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 69,
-            "priceBefore": 88.2,
-            "url": "https://www.steimatzky.co.il/012010569"
           }
         ],
         "audio": [
@@ -588,6 +696,24 @@
         ]
       },
       "bestsellers": [],
+      "featuredReviews": [
+        {
+          "id": "590615",
+          "nickname": "TAL Books 📚",
+          "rating": 5,
+          "excerpt": "הכוכבים רואים רק בחושך / מעיין גלעד💜 רומן מיוחד ומרגש במיוחד,על אהבה…",
+          "date": "06/06/2026",
+          "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
+        },
+        {
+          "id": "597737",
+          "nickname": "שני שלומן",
+          "rating": 5,
+          "excerpt": "איזה ספר מטורף! מהרגע הראשון הוא פשוט תופס ולא משחרר. הסיפור של…",
+          "date": "23/06/2026",
+          "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
+        }
+      ],
       "reviews": {
         "count": 52,
         "average": 4.56
@@ -628,6 +754,12 @@
             "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
           },
           {
+            "store": "סטימצקי",
+            "price": 29,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010581"
+          },
+          {
             "store": "ביבוקס",
             "price": 20,
             "priceBefore": 35,
@@ -648,16 +780,22 @@
             "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
           },
           {
-            "store": "צומת ספרים",
-            "price": 98,
-            "priceBefore": null,
-            "url": "https://www.booknet.co.il/מוצרים/הטעם-החמישי-160100000062"
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010581"
           },
           {
             "store": "ביבוקס",
             "price": 44,
             "priceBefore": 98,
             "url": "https://bbooks.co.il/book/הטעם-החמישי"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 98,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/הטעם-החמישי-160100000062"
           }
         ]
       },
@@ -666,6 +804,24 @@
           "store": "ביבוקס",
           "label": "רב־מכר בביבוקס",
           "url": "https://bbooks.co.il/רבי-מכר"
+        }
+      ],
+      "featuredReviews": [
+        {
+          "id": "598123",
+          "nickname": "Bar",
+          "rating": 5,
+          "excerpt": "סיימתי את הספר בלילה אחד, וזה כנראה הדבר שהכי מעיד על הספר…",
+          "date": "24/06/2026",
+          "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
+        },
+        {
+          "id": "599024",
+          "nickname": "אפי",
+          "rating": 5,
+          "excerpt": "איך שאני אוהבת פער גילים!!!! ספר מושששלם!!! זואי נערה בת 18, אדם…",
+          "date": "26/06/2026",
+          "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
         }
       ],
       "reviews": {
@@ -696,6 +852,6 @@
       "url": "https://indiebook.co.il/31/רבי-מכר"
     }
   ],
-  "pricesUpdatedAt": "2026-07-23T18:31:55.151Z",
-  "bestsellersUpdatedAt": "2026-07-23T14:31:05.425Z"
+  "pricesUpdatedAt": "2026-07-23T18:43:13.359Z",
+  "bestsellersUpdatedAt": "2026-07-23T18:40:30.777Z"
 }

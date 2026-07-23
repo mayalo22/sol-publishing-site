@@ -20,7 +20,7 @@ const productSources = {
   "39416": { booknet: "https://www.booknet.co.il/מוצרים/הדרקון-היהודי-160100000055", steimatzky: "https://www.steimatzky.co.il/012010556" },
   "39508": { booknet: "https://www.booknet.co.il/מוצרים/קוצים-160100000048", steimatzky: "https://www.steimatzky.co.il/012010557" },
   "39908": { booknet: "https://www.booknet.co.il/מוצרים/כוכבים-רואים-רק-בחושך-160100000079", steimatzky: "https://www.steimatzky.co.il/012010569" },
-  "40126": { booknet: "https://www.booknet.co.il/מוצרים/הטעם-החמישי-160100000062" }
+  "40126": { booknet: "https://www.booknet.co.il/מוצרים/הטעם-החמישי-160100000062", steimatzky: "https://www.steimatzky.co.il/012010581" }
 };
 
 async function fetchResource(url) {
@@ -80,6 +80,34 @@ function bestsellerBadges(title, sourceTitle, lists, previous = []) {
     if (!list?.success) return previous.filter(item => item.store === source.store);
     return candidates.some(candidate => candidate.length > 3 && list.text.includes(candidate)) ? [{ store: source.store, label: `רב־מכר ב${source.store}`, url: list.url }] : [];
   });
+}
+
+function shortReviewExcerpt(description, maxWords = 12) {
+  const words = String(description || "").replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
+  if (!words.length) return "";
+  return `${words.slice(0, maxWords).join(" ")}${words.length > maxWords ? "…" : ""}`;
+}
+
+async function loadFeaturedReviews(productId, productUrl, previous = []) {
+  try {
+    const endpoint = `https://www.e-vrit.co.il/api/product/reviews/${productId}?page=1&pageSize=50`;
+    const payload = await (await fetchResource(endpoint)).json();
+    return (payload.ReviewItems || [])
+      .filter(item => item.IsEnabled !== false && Number(item.ReviewRating) >= 4 && String(item.Description || "").trim().split(/\s+/).length >= 6)
+      .sort((a, b) => Number(b.ReviewRating) - Number(a.ReviewRating) || String(b.Description).length - String(a.Description).length || Number(b.LikesCount || 0) - Number(a.LikesCount || 0))
+      .slice(0, 2)
+      .map(item => ({
+        id: String(item.CustomerReviewID),
+        nickname: String(item.NickName || "קוראת עברית").trim(),
+        rating: Number(item.ReviewRating),
+        excerpt: shortReviewExcerpt(item.Description),
+        date: item.ReviewDate || null,
+        url: productUrl
+      }));
+  } catch (error) {
+    console.warn(`Reviews failed for ${productId}: ${error.message}`);
+    return previous;
+  }
 }
 
 function productText(html, title) {
@@ -206,6 +234,7 @@ for (const product of products) {
   const title = product.ProductName.replace(/^הכוכבים\s*1\s*-\s*/, "");
   const url = `https://www.e-vrit.co.il/product/${product.ProductID}/${encodeURIComponent(slug(title))}`;
   const previous = existing.books?.find(book => String(book.id) === String(product.ProductID));
+  const featuredReviews = await loadFeaturedReviews(product.ProductID, url, previous?.featuredReviews);
   books.push({
     id: String(product.ProductID), title, sourceTitle: product.ProductName,
     author: product.Authors?.map(author => author.Name).join(", ") || "הוצאת סול",
@@ -215,6 +244,7 @@ for (const product of products) {
     categories: product.Categories?.map(category => category.Name) || [], pricing: evritPricing(product.ProductPricing),
     offers: await storeOffers(product, url, previous?.offers),
     bestsellers: refreshBestsellers ? bestsellerBadges(title, product.ProductName, bestsellerLists, previous?.bestsellers) : (previous?.bestsellers || []),
+    featuredReviews,
     reviews: { count: Number(product.CountReviews) || 0, average: Number(product.AvgReviews) || 0 },
     themeColor: product.ThemeColor || "#D88972"
   });
