@@ -17,7 +17,16 @@ const profiles = {
   "סטלה": { intro: "סופרת רומנטית ישראלית מבית הוצאת סול, הכותבת על בריחה מן העבר, התחלות חדשות והלב שאי אפשר להשתיק." },
   "רינטה אונגר": { intro: "סופרת רומנטית ישראלית מבית הוצאת סול, היוצרת סיפורים על אמון, סודות וקשרים שנבחנים ברגעים המורכבים ביותר." },
   "מיקה פרנקו": { intro: "סופרת רומנטית ישראלית מבית הוצאת סול, הכותבת על דמויות פצועות, גבולות שנשברים ואהבה הצומחת במקומות לא צפויים." },
-  "רותם פלד": { intro: "סופרת רומנטית ישראלית מבית הוצאת סול. כתיבתה עוסקת באהבה, שליטה, פערים וגבולות בעולם שבו הרגש מסרב להישאר מוסתר." }
+  "רותם פלד": {
+    intro: "סופרת רומנטית ישראלית מבית הוצאת סול. כתיבתה עוסקת באהבה, שליטה, פערים וגבולות בעולם שבו הרגש מסרב להישאר מוסתר.",
+    photo: "assets/authors/rotem-feld.png",
+    links: [
+      { label: "אינסטגרם", url: "https://www.instagram.com/_rotem_peled_?igsh=MWQxNWs2amhscjI2Mg%3D%3D&utm_source=qr" },
+      { label: "טיקטוק", url: "https://www.tiktok.com/@_rotem_p?_r=1&_t=ZS-98HT16iDyFg" },
+      { label: "וואטפד", url: "https://www.wattpad.com/user/rotem_p?utm_source=ios&utm_medium=link&utm_content=share_profile&utm_campaign=invitefriends&wp_page=home&wp_uname=rotem_p" },
+      { label: "קבוצת הוואטסאפ", url: "https://chat.whatsapp.com/HIuPHFMgSuDAM4Dl1YCLia?s=cl&p=i&mlu=4" }
+    ]
+  }
 };
 
 const initials = name => name.split(/\s+/).map(part => part[0]).join("").slice(0, 2);
