@@ -10,6 +10,10 @@ const money = value => new Intl.NumberFormat("he-IL", {
 
 const formatLabels = { print: "מודפס", digital: "דיגיטלי", audio: "קולי" };
 const storeOrder = ["ביבוקס", "עברית", "סטימצקי", "צומת ספרים", "אינדיבוק"];
+const authorPhotos = {
+  "מעיין גלעד": "assets/authors/maayan-gilad.png",
+  "רותם פלד": "assets/authors/rotem-feld.png"
+};
 
 function formatPanel(book, format, offers) {
   const valid = offers.filter(offer => Number.isFinite(offer.price) && offer.url);
@@ -105,7 +109,9 @@ function renderAuthors() {
   const groups = state.books.reduce((map, book) => map.set(book.author, [...(map.get(book.author) || []), book]), new Map());
   document.querySelector("#home-authors-grid").innerHTML = [...groups.entries()].map(([name, books]) => `
     <a class="home-author-card reveal visible" href="author.html?name=${encodeURIComponent(name)}" aria-label="לעמוד הסופרת ${escapeHtml(name)}">
-      <div class="home-author-covers" aria-hidden="true">${books.slice(0, 3).map(book => `<img src="${book.cover}" alt="">`).join("")}</div>
+      ${authorPhotos[name]
+        ? `<img class="home-author-photo" src="${authorPhotos[name]}" alt="${escapeHtml(name)}" loading="lazy">`
+        : `<div class="home-author-covers" aria-hidden="true">${books.slice(0, 3).map(book => `<img src="${book.cover}" alt="">`).join("")}</div>`}
       <div class="home-author-copy"><p>${books.length === 1 ? "ספר אחד" : `${books.length} ספרים`} בהוצאת סול</p><h3>${escapeHtml(name)}</h3><span>לכל הספרים ולעמוד הסופרת ←</span></div>
     </a>`).join("");
 }

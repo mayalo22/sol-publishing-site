@@ -48,7 +48,12 @@ async function loadBooks() {
 async function renderDirectory(container) {
   const books = await loadBooks();
   const groups = books.reduce((map, book) => map.set(book.author, [...(map.get(book.author) || []), book]), new Map());
-  container.innerHTML = [...groups.entries()].map(([name, authorBooks]) => `<article class="author-tile"><div class="author-monogram" aria-hidden="true">${escapeHtml(initials(name))}</div><h2>${escapeHtml(name)}</h2><p>${escapeHtml(profiles[name]?.intro || "סופרת ישראלית מבית הוצאת סול.")}</p><p><strong>${authorBooks.length}</strong> ${authorBooks.length === 1 ? "ספר" : "ספרים"} בהוצאת סול</p><a class="text-link" href="author.html?name=${encodeURIComponent(name)}">לעמוד הסופרת ←</a></article>`).join("");
+  container.innerHTML = [...groups.entries()].map(([name, authorBooks]) => {
+    const portrait = profiles[name]?.photo
+      ? `<img class="author-tile-photo" src="${profiles[name].photo}" alt="${escapeHtml(name)}" loading="lazy">`
+      : `<div class="author-monogram" aria-hidden="true">${escapeHtml(initials(name))}</div>`;
+    return `<article class="author-tile">${portrait}<h2>${escapeHtml(name)}</h2><p>${escapeHtml(profiles[name]?.intro || "סופרת ישראלית מבית הוצאת סול.")}</p><p><strong>${authorBooks.length}</strong> ${authorBooks.length === 1 ? "ספר" : "ספרים"} בהוצאת סול</p><a class="text-link" href="author.html?name=${encodeURIComponent(name)}">לעמוד הסופרת ←</a></article>`;
+  }).join("");
 }
 
 async function renderAuthor(main) {
