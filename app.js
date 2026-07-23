@@ -51,7 +51,7 @@ function bookCard(book, index) {
       <img class="book-cover" src="${book.cover}" alt="עטיפת ${book.title}" loading="lazy">
     </div>
     <div class="book-body">
-      <p class="book-author"><a href="author.html?name=${encodeURIComponent(book.author)}" aria-label="לעמוד הסופרת ${escapeHtml(book.author)}">${escapeHtml(book.author)}</a></p>
+      <p class="book-author"><a href="author.html?name=${encodeURIComponent(book.author)}" aria-label="לעמוד הסופרת ${escapeHtml(book.author)}"><strong>${escapeHtml(book.author)}</strong><span>לעמוד הסופרת ←</span></a></p>
       ${bestsellerBadges ? `<div class="book-bestsellers" aria-label="הופעה ברשימות רבי מכר">${bestsellerBadges}</div>` : ""}
       <h3>${book.title}</h3>
       <p class="book-description">${book.description || "ספרות רומנטית ישראלית מבית הוצאת סול."}</p>
@@ -59,7 +59,7 @@ function bookCard(book, index) {
         ${book.reviews?.average ? `<span><span class="rating-star">★</span> <strong>${book.reviews.average.toFixed(1)}</strong></span>` : ""}
         <span>${reviewText}</span>
       </div>
-      ${featuredReviews ? `<details class="featured-reviews"><summary>קוראות מספרות · ${book.featuredReviews.length} ביקורות נבחרות</summary><div class="reader-reviews">${featuredReviews}</div><a class="reviews-source" href="${book.url}" target="_blank" rel="noopener">לכל הביקורות באתר עברית ↗</a></details>` : ""}
+      ${featuredReviews ? `<section class="featured-reviews" aria-label="ביקורות נבחרות על ${escapeHtml(book.title)}"><h4>קוראות מספרות</h4><div class="reader-reviews">${featuredReviews}</div><a class="reviews-source" href="${book.url}" target="_blank" rel="noopener">לכל הביקורות באתר עברית ↗</a></section>` : ""}
       ${formatComparison(book)}
     </div>
   </article>`;
@@ -101,6 +101,15 @@ function renderHeroCovers() {
   document.querySelector("#hero-count").textContent = state.books.length;
 }
 
+function renderAuthors() {
+  const groups = state.books.reduce((map, book) => map.set(book.author, [...(map.get(book.author) || []), book]), new Map());
+  document.querySelector("#home-authors-grid").innerHTML = [...groups.entries()].map(([name, books]) => `
+    <a class="home-author-card reveal visible" href="author.html?name=${encodeURIComponent(name)}" aria-label="לעמוד הסופרת ${escapeHtml(name)}">
+      <div class="home-author-covers" aria-hidden="true">${books.slice(0, 3).map(book => `<img src="${book.cover}" alt="">`).join("")}</div>
+      <div class="home-author-copy"><p>${books.length === 1 ? "ספר אחד" : `${books.length} ספרים`} בהוצאת סול</p><h3>${escapeHtml(name)}</h3><span>לכל הספרים ולעמוד הסופרת ←</span></div>
+    </a>`).join("");
+}
+
 function connectReveal() {
   if (!("IntersectionObserver" in window)) return document.querySelectorAll(".reveal").forEach(element => element.classList.add("visible"));
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -117,7 +126,7 @@ async function init() {
     if (!response.ok) throw new Error("הקטלוג אינו זמין");
     const data = await response.json();
     state.books = data.books || [];
-    renderHeroCovers(); renderFilters(); renderBooks();
+    renderHeroCovers(); renderFilters(); renderBooks(); renderAuthors();
     const date = new Date(data.updatedAt);
     document.querySelector("#sync-status").textContent = `השוואת המחירים עודכנה: ${new Intl.DateTimeFormat("he-IL", { dateStyle: "long", timeZone: "Asia/Jerusalem" }).format(date)} · המחיר הסופי נקבע באתר החנות בעת הרכישה.`;
   } catch (error) {
