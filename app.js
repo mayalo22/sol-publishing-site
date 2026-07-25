@@ -12,6 +12,7 @@ const formatLabels = { print: "מודפס", digital: "דיגיטלי", audio: "�
 const storeOrder = ["ביבוקס", "עברית", "סטימצקי", "צומת ספרים", "אינדיבוק"];
 const authorPhotos = {
   "מעיין גלעד": "assets/authors/maayan-gilad.png",
+  "רינטה אונגר": "assets/authors/rinata-ungar.png",
   "רותם פלד": "assets/authors/rotem-feld.png"
 };
 
