@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const dataUrl = new URL("../data.json", import.meta.url);
 const coversDir = new URL("../assets/covers/", import.meta.url);
-const publisherUrl = "https://www.e-vrit.co.il/Publisher/3051/%D7%A1%D7%95%D7%9C";
+const publisherUrl = "https://www.e-vrit.co.il/publisher/3051/%D7%A1%D7%95%D7%9C?orderby=2";
 const headers = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/138 Safari/537.36", "accept-language": "he-IL,he;q=0.9,en;q=0.7" };
 const refreshBestsellers = process.env.REFRESH_BESTSELLERS !== "false";
 

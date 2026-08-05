@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-23T18:54:40.295Z",
-  "sourceUrl": "https://www.e-vrit.co.il/Publisher/3051/%D7%A1%D7%95%D7%9C",
+  "updatedAt": "2026-08-05T06:39:07.535Z",
+  "sourceUrl": "https://www.e-vrit.co.il/publisher/3051/%D7%A1%D7%95%D7%9C?orderby=2",
   "books": [
     {
       "id": "31855",
@@ -19,38 +19,48 @@
       ],
       "pricing": {
         "digital": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 32
+        },
+        "print": {
+          "price": 69,
+          "priceBefore": null
         }
       },
       "offers": {
         "digital": [
           {
             "store": "עברית",
-            "price": 24,
+            "price": 27,
             "priceBefore": 32,
             "url": "https://www.e-vrit.co.il/product/31855/%D7%9E%D7%9C%D7%90%D7%9A-%D7%A9%D7%9C%D7%99"
           },
           {
             "store": "ביבוקס",
-            "price": 22,
+            "price": 20,
             "priceBefore": 32,
             "url": "https://bbooks.co.il/book/מלאך-שלי"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 32,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010346"
           },
           {
             "store": "אינדיבוק",
             "price": 32,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/מלאך-שלי"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 32,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010346"
           }
         ],
         "print": [
+          {
+            "store": "עברית",
+            "price": 69,
+            "priceBefore": null,
+            "url": "https://www.e-vrit.co.il/product/31855/%D7%9E%D7%9C%D7%90%D7%9A-%D7%A9%D7%9C%D7%99"
+          },
           {
             "store": "ביבוקס",
             "price": 44,
@@ -101,27 +111,21 @@
       ],
       "pricing": {
         "digital": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 35
         },
         "print": {
-          "price": 55,
-          "priceBefore": 68.6
+          "price": 68.6,
+          "priceBefore": null
         }
       },
       "offers": {
         "digital": [
           {
             "store": "עברית",
-            "price": 24,
-            "priceBefore": 35,
-            "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
-          },
-          {
-            "store": "סטימצקי",
             "price": 27,
             "priceBefore": 35,
-            "url": "https://www.steimatzky.co.il/012010524"
+            "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
           },
           {
             "store": "ביבוקס",
@@ -134,32 +138,38 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/לא-אוותר-לעולם"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 26,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010524"
           }
         ],
         "print": [
           {
             "store": "עברית",
-            "price": 55,
-            "priceBefore": 68.6,
+            "price": 68.6,
+            "priceBefore": null,
             "url": "https://www.e-vrit.co.il/product/38170/%D7%9C%D7%90-%D7%90%D7%95%D7%95%D7%AA%D7%A8-%D7%9C%D7%A2%D7%95%D7%9C%D7%9D"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 49,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/לא-אוותר-לעולם"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 60,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/לא-אוותר-לעולם--מעיין-גלעד"
           },
           {
             "store": "סטימצקי",
             "price": 69,
             "priceBefore": 88.2,
             "url": "https://www.steimatzky.co.il/012010524"
-          },
-          {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/לא-אוותר-לעולם"
-          },
-          {
-            "store": "צומת ספרים",
-            "price": 98,
-            "priceBefore": null,
-            "url": "https://www.booknet.co.il/מוצרים/לא-אוותר-לעולם--מעיין-גלעד"
           }
         ]
       },
@@ -183,8 +193,8 @@
         }
       ],
       "reviews": {
-        "count": 83,
-        "average": 4.12
+        "count": 88,
+        "average": 4.14
       },
       "themeColor": "#1C1C1C"
     },
@@ -205,27 +215,21 @@
       ],
       "pricing": {
         "digital": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 35
         },
         "print": {
-          "price": 55,
-          "priceBefore": 68.6
+          "price": 68.6,
+          "priceBefore": null
         }
       },
       "offers": {
         "digital": [
           {
             "store": "עברית",
-            "price": 24,
-            "priceBefore": 35,
-            "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
-          },
-          {
-            "store": "סטימצקי",
             "price": 27,
             "priceBefore": 35,
-            "url": "https://www.steimatzky.co.il/012010525"
+            "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
           },
           {
             "store": "ביבוקס",
@@ -238,26 +242,38 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/בין-בריחה-לאהבה"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 26,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010525"
           }
         ],
         "print": [
           {
             "store": "עברית",
-            "price": 55,
-            "priceBefore": 68.6,
+            "price": 68.6,
+            "priceBefore": null,
             "url": "https://www.e-vrit.co.il/product/38171/%D7%91%D7%99%D7%9F-%D7%91%D7%A8%D7%99%D7%97%D7%94-%D7%9C%D7%90%D7%94%D7%91%D7%94"
           },
           {
             "store": "ביבוקס",
-            "price": 44,
+            "price": 49,
             "priceBefore": 98,
             "url": "https://bbooks.co.il/book/בין-בריחה-לאהבה"
           },
           {
             "store": "צומת ספרים",
-            "price": 98,
+            "price": 60,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/בין-בריחה-לאהבה-1-160100000024"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 69,
+            "priceBefore": 88.2,
+            "url": "https://www.steimatzky.co.il/012010525"
           }
         ]
       },
@@ -303,31 +319,25 @@
       ],
       "pricing": {
         "digital": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 35
         },
         "print": {
-          "price": 55,
-          "priceBefore": 68.6
+          "price": 68.6,
+          "priceBefore": null
         }
       },
       "offers": {
         "digital": [
           {
             "store": "עברית",
-            "price": 24,
+            "price": 27,
             "priceBefore": 35,
             "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A"
           },
           {
-            "store": "סטימצקי",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010555"
-          },
-          {
             "store": "ביבוקס",
-            "price": 25,
+            "price": 24,
             "priceBefore": 35,
             "url": "https://bbooks.co.il/book/אאמין-לך"
           },
@@ -336,32 +346,38 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/אאמין-לך"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 26,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010555"
           }
         ],
         "print": [
           {
             "store": "עברית",
-            "price": 55,
-            "priceBefore": 68.6,
+            "price": 68.6,
+            "priceBefore": null,
             "url": "https://www.e-vrit.co.il/product/39393/%D7%90%D7%90%D7%9E%D7%99%D7%9F-%D7%9C%D7%9A"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 49,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/אאמין-לך"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 60,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/אאמין-לך-1-160100000031"
           },
           {
             "store": "סטימצקי",
             "price": 69,
             "priceBefore": 88.2,
             "url": "https://www.steimatzky.co.il/012010555"
-          },
-          {
-            "store": "ביבוקס",
-            "price": 40,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/אאמין-לך"
-          },
-          {
-            "store": "צומת ספרים",
-            "price": 98,
-            "priceBefore": null,
-            "url": "https://www.booknet.co.il/מוצרים/אאמין-לך-1-160100000031"
           }
         ]
       },
@@ -385,8 +401,8 @@
         }
       ],
       "reviews": {
-        "count": 58,
-        "average": 4.41
+        "count": 62,
+        "average": 4.39
       },
       "themeColor": "#F75F8A"
     },
@@ -407,31 +423,25 @@
       ],
       "pricing": {
         "digital": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 35
         },
         "print": {
-          "price": 55,
-          "priceBefore": 68.6
+          "price": 68.6,
+          "priceBefore": null
         }
       },
       "offers": {
         "digital": [
           {
             "store": "עברית",
-            "price": 24,
+            "price": 27,
             "priceBefore": 35,
             "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99"
           },
           {
-            "store": "סטימצקי",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010556"
-          },
-          {
             "store": "ביבוקס",
-            "price": 25,
+            "price": 20,
             "priceBefore": 35,
             "url": "https://bbooks.co.il/book/הדרקון-היהודי"
           },
@@ -440,32 +450,38 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/הדרקון-היהודי"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010556"
           }
         ],
         "print": [
           {
             "store": "עברית",
-            "price": 55,
-            "priceBefore": 68.6,
+            "price": 68.6,
+            "priceBefore": null,
             "url": "https://www.e-vrit.co.il/product/39416/%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 49,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/הדרקון-היהודי"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 60,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/הדרקון-היהודי-160100000055"
           },
           {
             "store": "סטימצקי",
             "price": 69,
             "priceBefore": 88.2,
             "url": "https://www.steimatzky.co.il/012010556"
-          },
-          {
-            "store": "ביבוקס",
-            "price": 40,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/הדרקון-היהודי"
-          },
-          {
-            "store": "צומת ספרים",
-            "price": 98,
-            "priceBefore": null,
-            "url": "https://www.booknet.co.il/מוצרים/הדרקון-היהודי-160100000055"
           }
         ]
       },
@@ -511,27 +527,21 @@
       ],
       "pricing": {
         "digital": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 35
         },
         "print": {
-          "price": 55,
-          "priceBefore": 68.6
+          "price": 68.6,
+          "priceBefore": null
         }
       },
       "offers": {
         "digital": [
           {
             "store": "עברית",
-            "price": 24,
+            "price": 27,
             "priceBefore": 35,
             "url": "https://www.e-vrit.co.il/product/39508/%D7%A7%D7%95%D7%A6%D7%99%D7%9D"
-          },
-          {
-            "store": "סטימצקי",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010557"
           },
           {
             "store": "ביבוקס",
@@ -544,32 +554,38 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/קוצים"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 35,
+            "priceBefore": null,
+            "url": "https://www.steimatzky.co.il/012010557"
           }
         ],
         "print": [
           {
             "store": "עברית",
-            "price": 55,
-            "priceBefore": 68.6,
+            "price": 68.6,
+            "priceBefore": null,
             "url": "https://www.e-vrit.co.il/product/39508/%D7%A7%D7%95%D7%A6%D7%99%D7%9D"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 49,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/קוצים"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 60,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/קוצים-160100000048"
           },
           {
             "store": "סטימצקי",
             "price": 69,
             "priceBefore": 88.2,
             "url": "https://www.steimatzky.co.il/012010557"
-          },
-          {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/קוצים"
-          },
-          {
-            "store": "צומת ספרים",
-            "price": 98,
-            "priceBefore": null,
-            "url": "https://www.booknet.co.il/מוצרים/קוצים-160100000048"
           }
         ]
       },
@@ -593,8 +609,8 @@
         }
       ],
       "reviews": {
-        "count": 36,
-        "average": 4.64
+        "count": 38,
+        "average": 4.66
       },
       "themeColor": "#5B5048"
     },
@@ -615,15 +631,15 @@
       ],
       "pricing": {
         "digital": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 35
         },
         "print": {
-          "price": 55,
-          "priceBefore": 68.6
+          "price": 68.6,
+          "priceBefore": null
         },
         "audio": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 35
         }
       },
@@ -631,19 +647,13 @@
         "digital": [
           {
             "store": "עברית",
-            "price": 24,
+            "price": 27,
             "priceBefore": 35,
             "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
           },
           {
-            "store": "סטימצקי",
-            "price": 35,
-            "priceBefore": null,
-            "url": "https://www.steimatzky.co.il/012010569"
-          },
-          {
             "store": "ביבוקס",
-            "price": 20,
+            "price": 29,
             "priceBefore": 35,
             "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
           },
@@ -652,38 +662,44 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/כוכבים-רואים-רק-בחושך"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 26,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010569"
           }
         ],
         "print": [
           {
             "store": "עברית",
-            "price": 55,
-            "priceBefore": 68.6,
+            "price": 68.6,
+            "priceBefore": null,
             "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 49,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
+          },
+          {
+            "store": "צומת ספרים",
+            "price": 60,
+            "priceBefore": null,
+            "url": "https://www.booknet.co.il/מוצרים/כוכבים-רואים-רק-בחושך-160100000079"
           },
           {
             "store": "סטימצקי",
             "price": 69,
             "priceBefore": 88.2,
             "url": "https://www.steimatzky.co.il/012010569"
-          },
-          {
-            "store": "צומת ספרים",
-            "price": 98,
-            "priceBefore": null,
-            "url": "https://www.booknet.co.il/מוצרים/כוכבים-רואים-רק-בחושך-160100000079"
-          },
-          {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/כוכבים-רואים-רק-בחושך"
           }
         ],
         "audio": [
           {
             "store": "עברית",
-            "price": 24,
+            "price": 27,
             "priceBefore": 35,
             "url": "https://www.e-vrit.co.il/product/39908/%D7%9B%D7%95%D7%9B%D7%91%D7%99%D7%9D-%D7%A8%D7%95%D7%90%D7%99%D7%9D-%D7%A8%D7%A7-%D7%91%D7%97%D7%95%D7%A9%D7%9A"
           },
@@ -721,8 +737,8 @@
         }
       ],
       "reviews": {
-        "count": 52,
-        "average": 4.56
+        "count": 56,
+        "average": 4.55
       },
       "themeColor": "#B5EDFE"
     },
@@ -743,11 +759,11 @@
       ],
       "pricing": {
         "digital": {
-          "price": 24,
+          "price": 27,
           "priceBefore": 35
         },
         "print": {
-          "price": 55,
+          "price": 49,
           "priceBefore": 68.6
         }
       },
@@ -755,19 +771,13 @@
         "digital": [
           {
             "store": "עברית",
-            "price": 24,
+            "price": 27,
             "priceBefore": 35,
             "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
           },
           {
-            "store": "סטימצקי",
-            "price": 29,
-            "priceBefore": 35,
-            "url": "https://www.steimatzky.co.il/012010581"
-          },
-          {
             "store": "ביבוקס",
-            "price": 20,
+            "price": 29,
             "priceBefore": 35,
             "url": "https://bbooks.co.il/book/הטעם-החמישי"
           },
@@ -776,14 +786,26 @@
             "price": 35,
             "priceBefore": null,
             "url": "https://indiebook.co.il/shop/הטעם-החמישי"
+          },
+          {
+            "store": "סטימצקי",
+            "price": 26,
+            "priceBefore": 35,
+            "url": "https://www.steimatzky.co.il/012010581"
           }
         ],
         "print": [
           {
             "store": "עברית",
-            "price": 55,
+            "price": 49,
             "priceBefore": 68.6,
             "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
+          },
+          {
+            "store": "ביבוקס",
+            "price": 55,
+            "priceBefore": 98,
+            "url": "https://bbooks.co.il/book/הטעם-החמישי"
           },
           {
             "store": "סטימצקי",
@@ -792,14 +814,8 @@
             "url": "https://www.steimatzky.co.il/012010581"
           },
           {
-            "store": "ביבוקס",
-            "price": 44,
-            "priceBefore": 98,
-            "url": "https://bbooks.co.il/book/הטעם-החמישי"
-          },
-          {
             "store": "צומת ספרים",
-            "price": 98,
+            "price": 60,
             "priceBefore": null,
             "url": "https://www.booknet.co.il/מוצרים/הטעם-החמישי-160100000062"
           }
@@ -822,17 +838,17 @@
           "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
         },
         {
-          "id": "599024",
-          "nickname": "אפי",
+          "id": "608170",
+          "nickname": "TAL Books 📚",
           "rating": 5,
-          "excerpt": "איך שאני אוהבת פער גילים!!!! ספר מושששלם!!! זואי נערה בת 18, אדם…",
-          "date": "26/06/2026",
+          "excerpt": "הטעם החמישי / רותם פלד❤️‍🔥רומן אהבה יפיפה ומתוק במיוחד❤️‍🔥🍓רומן על הטעם החמישי…",
+          "date": "17/07/2026",
           "url": "https://www.e-vrit.co.il/product/40126/%D7%94%D7%98%D7%A2%D7%9D-%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99"
         }
       ],
       "reviews": {
-        "count": 30,
-        "average": 4.4
+        "count": 33,
+        "average": 4.33
       },
       "themeColor": "#4A4240"
     }
@@ -858,6 +874,6 @@
       "url": "https://indiebook.co.il/31/רבי-מכר"
     }
   ],
-  "pricesUpdatedAt": "2026-07-23T18:54:40.295Z",
-  "bestsellersUpdatedAt": "2026-07-23T18:54:40.295Z"
+  "pricesUpdatedAt": "2026-08-05T06:39:07.535Z",
+  "bestsellersUpdatedAt": "2026-08-03T21:56:38.481Z"
 }
