@@ -7,7 +7,7 @@ const headers = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Apple
 const refreshBestsellers = process.env.REFRESH_BESTSELLERS !== "false";
 
 const bestsellerSources = [
-  { store: "עברית", url: "https://www.e-vrit.co.il/group/2572/רבי-המכר-של-השבוע" },
+  { store: "עברית", url: "https://www.e-vrit.co.il/category/34/רומן-רומנטי?orderby=3", products: true },
   { store: "ביבוקס", url: "https://bbooks.co.il/", section: true },
   { store: "אינדיבוק", url: "https://indiebook.co.il/31/רבי-מכר" }
 ];
@@ -59,7 +59,7 @@ async function loadBestsellerLists() {
   await Promise.all(bestsellerSources.map(async source => {
     try {
       const html = await (await fetchResource(source.url)).text();
-      let text = cleanText(html);
+      let text = source.products ? extractProducts(html).map(product => product.ProductName).join(" ") : cleanText(html);
       if (source.section) {
         const index = text.indexOf("רבי מכר");
         text = index >= 0 ? text.slice(index, index + 3200) : "";
@@ -225,7 +225,8 @@ async function loadExistingData() {
 
 const existing = await loadExistingData();
 await mkdir(coversDir, { recursive: true });
-const products = extractProducts(await (await fetchResource(publisherUrl)).text());
+const products = extractProducts(await (await fetchResource(publisherUrl)).text())
+  .filter(product => !/^מארז(?:\s|$)/.test(product.ProductName.trim()));
 if (!products.length) throw new Error("The publisher page returned an empty catalog");
 const bestsellerLists = refreshBestsellers ? await loadBestsellerLists() : null;
 
