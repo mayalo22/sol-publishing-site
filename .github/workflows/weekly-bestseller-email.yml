@@ -42,7 +42,7 @@ jobs:
           username: mayalo22@gmail.com
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
           subject: ${{ steps.report.outputs.subject }}
-          to: mayalo22@gmail.com
+          to: mayalo22@gmail.com,stelly200555@gmail.com
           from: הוצאת סול <mayalo22@gmail.com>
           body: file://.bestseller-email.txt
           attachments: .bestseller-attachments/*.png
