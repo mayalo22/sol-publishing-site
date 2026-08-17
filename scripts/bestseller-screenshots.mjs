@@ -152,19 +152,22 @@ export async function createBestsellerSocialPosts({ books, bookIds, attachmentsD
   const dateParts = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Jerusalem", day: "numeric", month: "numeric", year: "numeric" }).formatToParts(new Date());
   const value = type => dateParts.find(part => part.type === type)?.value;
   const israelDate = `${value("day")}.${value("month")}.${value("year")}`;
-  const logoFiles = { "ביבוקס": "assets/store-logos/bbooks.png", "עברית": "assets/store-logos/e-vrit.svg" };
   const results = [];
   try {
     for (const id of [...new Set(bookIds)]) {
       const book = books.find(item => item.id === id);
       if (!book) continue;
-      const cover = await dataUri(book.cover);
-      const background = await dataUri("assets/bestseller/instagram-background-v2.png");
-      const logos = (await Promise.all(book.sources.filter(store => logoFiles[store]).map(async store => `<div class="source"><img src="${await dataUri(logoFiles[store])}" alt="${escapeHtml(store)}"><span>רב־מכר באתר ${escapeHtml(store)}</span></div>`))).join("");
+      let background;
+      try {
+        background = await dataUri(`assets/bestseller/generated-posts/${book.id}.png`);
+      } catch {
+        results.push({ id, success: false, error: "לא קיימת לספר גרפיקת מחולל מאושרת; לא צורפה גרפיקה חלופית", date: israelDate });
+        continue;
+      }
       const html = `<!doctype html><html dir="rtl"><head><meta charset="utf-8"><style>
-        *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1080px;overflow:hidden}body{font-family:Arial,"Noto Sans Hebrew",sans-serif;background:#fff8e9 url('${background}') center/cover no-repeat;color:#3f176b;position:relative}
-        .stars{display:none}.wrap{position:relative;height:100%;padding:34px 62px;text-align:center}.kicker{font-size:38px;font-weight:800;text-shadow:0 1px #fff}.headline{font-size:76px;line-height:.95;font-weight:900;margin:8px 0 18px;text-shadow:0 2px #fff}.headline span{color:#bd7b00}.middle{display:flex;align-items:center;justify-content:center;gap:40px}.cover{height:610px;max-width:430px;object-fit:contain;border:7px solid white;box-shadow:0 13px 32px #3f176b55}.medal{position:absolute;right:61px;top:235px;width:180px;height:180px;border-radius:50%;display:grid;place-items:center;color:#42156c;font-size:38px;font-weight:900;text-shadow:0 1px #fff}.logos{position:absolute;left:33px;bottom:86px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}.source{min-width:330px;height:64px;padding:5px 12px;background:#fffdf8eF;border:2px solid #c99019;border-radius:12px;display:flex;align-items:center;gap:10px;box-shadow:0 5px 14px #0002}.source img{width:95px;height:44px;object-fit:contain}.source span{font-size:23px;font-weight:900;color:#4a286a;white-space:nowrap}.date{position:absolute;bottom:22px;left:0;right:0;font-size:38px;font-weight:900;color:#3f176b;text-shadow:0 1px #fff}
-      </style></head><body><div class="stars"></div><main class="wrap"><div class="kicker">מככבת השבוע</div><div class="headline">ברשימת <span>רבי־המכר!</span></div><div class="medal">רב־<br>מכר</div><div class="middle"><img class="cover" src="${cover}" alt="${escapeHtml(book.title)}"></div><div class="logos">${logos}</div><div class="date">${israelDate}</div></main></body></html>`;
+        *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1080px;overflow:hidden}body{font-family:Arial,"Noto Sans Hebrew",sans-serif;background:#fff8e9 url('${background}') center/cover no-repeat;position:relative}
+        .date{position:absolute;bottom:52px;left:0;right:0;text-align:center;font-size:34px;line-height:1;font-weight:900;color:#42156c;text-shadow:0 1px #fff}
+      </style></head><body><div class="date">${israelDate}</div></body></html>`;
       const page = await context.newPage();
       const attachmentName = `${book.id} -- ${safeName(book.title)} -- פוסט אינסטגרם -- ${israelDate}.png`;
       try {
