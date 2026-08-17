@@ -12,6 +12,11 @@ const bestsellerSources = [
   { store: "אינדיבוק", url: "https://indiebook.co.il/31/רבי-מכר" }
 ];
 
+const bestsellerAliases = {
+  "40819": ["דואט סודות וחטאים"],
+  "40820": ["דואט סודות וחטאים"]
+};
+
 const productSources = {
   "31855": { steimatzky: "https://www.steimatzky.co.il/012010346" },
   "38170": { booknet: "https://www.booknet.co.il/מוצרים/לא-אוותר-לעולם--מעיין-גלעד", steimatzky: "https://www.steimatzky.co.il/012010524" },
@@ -73,8 +78,8 @@ async function loadBestsellerLists() {
   return lists;
 }
 
-function bestsellerBadges(title, sourceTitle, lists, previous = []) {
-  const candidates = [normalize(title), normalize(sourceTitle)].filter(Boolean);
+function bestsellerBadges(productId, title, sourceTitle, lists, previous = []) {
+  const candidates = [title, sourceTitle, ...(bestsellerAliases[String(productId)] || [])].map(normalize).filter(Boolean);
   return bestsellerSources.flatMap(source => {
     const list = lists.get(source.store);
     if (!list?.success) return previous.filter(item => item.store === source.store);
@@ -244,7 +249,7 @@ for (const product of products) {
     pages: product.NumOfPages ? Number(product.NumOfPages) : null,
     categories: product.Categories?.map(category => category.Name) || [], pricing: evritPricing(product.ProductPricing),
     offers: await storeOffers(product, url, previous?.offers),
-    bestsellers: refreshBestsellers ? bestsellerBadges(title, product.ProductName, bestsellerLists, previous?.bestsellers) : (previous?.bestsellers || []),
+    bestsellers: refreshBestsellers ? bestsellerBadges(product.ProductID, title, product.ProductName, bestsellerLists, previous?.bestsellers) : (previous?.bestsellers || []),
     featuredReviews,
     reviews: { count: Number(product.CountReviews) || 0, average: Number(product.AvgReviews) || 0 },
     themeColor: product.ThemeColor || "#D88972"
