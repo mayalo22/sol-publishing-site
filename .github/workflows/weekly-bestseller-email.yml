@@ -1,0 +1,44 @@
+name: Sol weekly bestseller email
+
+on:
+  schedule:
+    # Run candidates for 07:00 in Israel during daylight and standard time.
+    - cron: "0 4,5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Monday at 07:00 in Israel
+        id: clock
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || { [ "$(TZ=Asia/Jerusalem date +%u)" = "1" ] && [ "$(TZ=Asia/Jerusalem date +%H)" = "07" ]; }; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build weekly report
+        if: steps.clock.outputs.run == 'true'
+        id: report
+        env:
+          CATALOG_URL: https://mayalo22.github.io/sol-publishing-site/data.json
+        run: node scripts/bestseller-email-report.mjs weekly
+      - name: Send weekly email
+        if: steps.clock.outputs.run == 'true' && steps.report.outputs.send == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: mayalo22@gmail.com
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: ${{ steps.report.outputs.subject }}
+          to: mayalo22@gmail.com
+          from: הוצאת סול <mayalo22@gmail.com>
+          body: file://.bestseller-email.txt

@@ -1,0 +1,75 @@
+name: Sol bestseller email alerts
+
+on:
+  schedule:
+    # GitHub cron uses UTC. Adjacent hours cover Israeli daylight and standard time;
+    # the local-time gate below allows only 07:00, 15:00 and 23:00 in Israel.
+    - cron: "0 4,5,12,13,20,21 * * *"
+  workflow_dispatch:
+    inputs:
+      report:
+        description: Report type
+        required: true
+        default: monitor
+        type: choice
+        options:
+          - monitor
+          - weekly
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bestseller-email-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check requested time in Israel
+        id: clock
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          elif [[ "$(TZ=Asia/Jerusalem date +%H)" =~ ^(07|15|23)$ ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Restore previous bestseller state
+        if: steps.clock.outputs.run == 'true'
+        id: restore-state
+        uses: actions/cache/restore@v4
+        with:
+          path: .bestseller-state.json
+          key: bestseller-state-${{ github.run_id }}
+          restore-keys: bestseller-state-
+      - name: Compare bestseller lists
+        if: steps.clock.outputs.run == 'true'
+        id: report
+        env:
+          CATALOG_URL: https://mayalo22.github.io/sol-publishing-site/data.json
+        run: node scripts/bestseller-email-report.mjs monitor
+      - name: Save current bestseller state
+        if: steps.clock.outputs.run == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .bestseller-state.json
+          key: bestseller-state-${{ github.run_id }}
+      - name: Send change email
+        if: steps.clock.outputs.run == 'true' && steps.report.outputs.send == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: mayalo22@gmail.com
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: ${{ steps.report.outputs.subject }}
+          to: mayalo22@gmail.com
+          from: הוצאת סול <mayalo22@gmail.com>
+          body: file://.bestseller-email.txt
+
