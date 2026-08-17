@@ -13,8 +13,8 @@ const headers = {
 };
 
 const sources = [
-  { store: "עברית", url: "https://www.e-vrit.co.il/category/34/רומן-רומנטי?orderby=3", products: true },
-  { store: "ביבוקס", url: "https://bbooks.co.il/", section: true },
+  { store: "עברית", url: "https://www.e-vrit.co.il/content/292" },
+  { store: "ביבוקס", url: "https://bbooks.co.il/רבי-מכר" },
   { store: "אינדיבוק", url: "https://indiebook.co.il/31/רבי-מכר" }
 ];
 

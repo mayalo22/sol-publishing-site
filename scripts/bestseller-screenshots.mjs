@@ -21,42 +21,27 @@ async function findVisible(page, texts) {
 async function screenshotEvidence(page, source, book, destination) {
   await page.goto(source.url, { waitUntil: "domcontentloaded", timeout: 60000 });
   await page.waitForTimeout(5000);
-  if (source.store === "ביבוקס") {
-    let section = page.locator("#menu-4-container");
-    if (!await section.count()) throw new Error("אזור רבי־המכר של ביבוקס לא נמצא בעמוד");
-    await section.evaluate(element => {
-      const clone = element.cloneNode(true);
-      document.body.replaceChildren(clone);
-      document.body.style.margin = "24px";
-      clone.style.setProperty("display", "block", "important");
-      clone.style.setProperty("visibility", "visible", "important");
-      clone.style.setProperty("position", "static", "important");
-      clone.style.setProperty("padding", "30px", "important");
-      clone.querySelectorAll("*").forEach(child => child.style.setProperty("visibility", "visible", "important"));
-      clone.querySelectorAll(".product-cube").forEach(child => child.style.setProperty("display", "block", "important"));
-      clone.querySelectorAll(".row").forEach(child => {
-        child.style.setProperty("display", "flex", "important");
-        child.style.setProperty("flex-wrap", "wrap", "important");
-      });
-    });
-    section = page.locator("#menu-4-container");
-    const title = await findVisible(section, book.candidates);
-    if (!title) throw new Error("שם הספר או העטיפה לא נמצאו באזור רבי־המכר של ביבוקס");
-    await section.locator("img").evaluateAll(images => images.forEach(image => {
-      const lazySource = image.getAttribute("data-original") || image.getAttribute("data-src");
-      if (lazySource) image.setAttribute("src", lazySource);
-    }));
-    await page.waitForTimeout(1500);
-    await section.screenshot({ path: destination });
-    return;
-  }
   const bookLocator = await findVisible(page, book.candidates);
   if (!bookLocator) throw new Error("שם הספר או העטיפה לא נמצאו בעמוד");
   await bookLocator.scrollIntoViewIfNeeded();
   await page.waitForTimeout(1000);
 
-  const bestsellerLocator = await findVisible(page, ["רבי מכר", "רבי־מכר", "רב מכר", "הנמכרים ביותר"]);
+  let bestsellerLocator = await findVisible(page, ["רבי המכר", "רבי־המכר", "רבי מכר", "רבי־מכר", "רב מכר", "הנמכרים ביותר"]);
   if (!bestsellerLocator) throw new Error("לא נמצאה בעמוד כותרת גלויה שמזהה אזור רבי־מכר");
+
+  if (source.store === "עברית") {
+    await bookLocator.evaluate(element => {
+      const card = element.closest("li") || element.closest("article") || element.parentElement;
+      const headingText = [...document.querySelectorAll("h1,h2")].find(heading => /רבי[־ -]?ה?מכר/.test(heading.textContent || ""))?.textContent?.trim();
+      if (!card || !headingText) throw new Error("כותרת רבי־המכר או כרטיס הספר לא נמצאו");
+      const banner = document.createElement("div");
+      banner.id = "bestseller-proof-heading";
+      banner.textContent = headingText;
+      banner.style.cssText = "display:block!important;visibility:visible!important;position:static!important;align-self:start!important;width:100%;height:auto!important;max-height:120px;padding:18px;margin:0 0 18px;background:white;border:3px solid #d49a19;border-radius:12px;text-align:center;font:800 34px Arial,sans-serif;color:#111";
+      card.parentElement.insertBefore(banner, card);
+    });
+    bestsellerLocator = page.locator("#bestseller-proof-heading");
+  }
 
   const bookBox = await bookLocator.boundingBox();
   const titleBox = await bestsellerLocator.boundingBox();
@@ -66,7 +51,38 @@ async function screenshotEvidence(page, source, book, destination) {
   const y = Math.max(0, Math.min(bookBox.y, titleBox.y) - 80);
   const right = Math.min(pageSize.width, Math.max(bookBox.x + bookBox.width, titleBox.x + titleBox.width) + 40);
   const bottom = Math.min(pageSize.height, Math.max(bookBox.y + bookBox.height, titleBox.y + titleBox.height) + 80);
-  if (bottom - y > 2200) throw new Error("כותרת רבי־המכר והספר רחוקים מדי לצילום ברור אחד");
+  if (bottom - y > 2200) {
+    await page.evaluate(({ candidates }) => {
+      const normalizedCandidates = candidates.map(value => value.trim()).filter(Boolean);
+      const elements = [...document.querySelectorAll("body *")];
+      const title = [...document.querySelectorAll("h1,h2")].find(element => /רבי[־ -]?ה?מכר/.test(element.textContent || ""))
+        || elements.find(element => /רבי[־ -]?ה?מכר/.test(element.textContent || "") && element.children.length < 4);
+      const book = elements.find(element => normalizedCandidates.some(candidate => (element.textContent || "").includes(candidate)) && element.children.length < 4);
+      if (!title || !book) throw new Error("לא ניתן היה לבודד את כותרת רבי־המכר והספר");
+      const card = book.closest("li") || book.closest("article") || book.closest("[class*='product']") || book.parentElement;
+      const cover = card.querySelector("img") || card.parentElement?.querySelector("img");
+      if (!cover) throw new Error("עטיפת הספר לא נמצאה באזור רבי־המכר");
+      const proof = document.createElement("main");
+      proof.id = "bestseller-proof";
+      proof.dir = "rtl";
+      proof.style.cssText = "padding:32px;background:white;font-family:Arial,sans-serif;display:flex;flex-direction:column;gap:24px;align-items:center;min-width:700px";
+      const heading = document.createElement("h1");
+      heading.textContent = (title.textContent || "").trim();
+      heading.style.cssText = "font-size:36px;font-weight:800;display:block!important;visibility:visible!important;position:static!important;margin:0;color:#111";
+      const bookHeading = document.createElement("h2");
+      bookHeading.textContent = normalizedCandidates.find(candidate => (book.textContent || "").includes(candidate)) || (book.textContent || "").trim();
+      bookHeading.style.cssText = "font-size:28px;font-weight:700;margin:0;color:#222";
+      const clonedCover = cover.cloneNode(true);
+      const lazySource = cover.getAttribute("data-original") || cover.getAttribute("data-src") || cover.currentSrc || cover.src;
+      if (lazySource) clonedCover.setAttribute("src", new URL(lazySource, location.href).href);
+      clonedCover.style.cssText = "display:block!important;visibility:visible!important;position:static!important;transform:none!important;max-width:420px;max-height:560px;object-fit:contain";
+      proof.append(heading, bookHeading, clonedCover);
+      document.body.replaceChildren(proof);
+    }, { candidates: book.candidates });
+    await page.waitForTimeout(2000);
+    await page.locator("#bestseller-proof").screenshot({ path: destination });
+    return;
+  }
   await page.screenshot({ path: destination, clip: { x, y, width: Math.max(1, right - x), height: Math.max(1, bottom - y) } });
 }
 
@@ -143,11 +159,11 @@ export async function createBestsellerSocialPosts({ books, bookIds, attachmentsD
       const book = books.find(item => item.id === id);
       if (!book) continue;
       const cover = await dataUri(book.cover);
+      const background = await dataUri("assets/bestseller/instagram-background-v2.png");
       const logos = (await Promise.all(book.sources.filter(store => logoFiles[store]).map(async store => `<div class="source"><img src="${await dataUri(logoFiles[store])}" alt="${escapeHtml(store)}"><span>רב־מכר באתר ${escapeHtml(store)}</span></div>`))).join("");
       const html = `<!doctype html><html dir="rtl"><head><meta charset="utf-8"><style>
-        *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1080px;overflow:hidden}body{font-family:Arial,"Noto Sans Hebrew",sans-serif;background:#fff8e9;color:#3f176b;position:relative}
-        body:before,body:after{content:"";position:absolute;width:430px;height:430px;border-radius:48%;filter:blur(5px);opacity:.38;background:radial-gradient(circle at 35% 35%,#7c4aa8 0 10%,#b991cc 35%,transparent 70%)}body:before{left:-170px;top:-130px}body:after{right:-180px;bottom:-150px}
-        .stars{position:absolute;inset:0;background-image:radial-gradient(#d49a19 1.8px,transparent 2px);background-size:66px 66px;opacity:.65}.wrap{position:relative;height:100%;padding:44px 62px;text-align:center}.kicker{font-size:40px;font-weight:800}.headline{font-size:84px;line-height:.95;font-weight:900;margin:15px 0 22px}.headline span{color:#bd7b00}.middle{display:flex;align-items:center;justify-content:center;gap:40px}.cover{height:650px;max-width:470px;object-fit:contain;border:8px solid white;outline:3px solid #d69b24;box-shadow:0 12px 30px #3f176b44}.medal{position:absolute;right:55px;top:250px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fff2a2,#e6a514 48%,#9b5b00);border:9px double #fff0a1;display:grid;place-items:center;color:#42156c;font-size:39px;font-weight:900;box-shadow:0 9px 16px #0004}.logos{position:absolute;left:38px;bottom:82px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}.source{min-width:300px;height:74px;padding:8px 14px;background:#fff;border:3px solid #d69b24;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:0 5px 14px #0002}.source img{width:100px;height:50px;object-fit:contain}.source span{font-size:25px;font-weight:900;color:#4a286a;white-space:nowrap}.date{position:absolute;bottom:25px;left:0;right:0;font-size:39px;font-weight:900;color:#3f176b}
+        *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1080px;overflow:hidden}body{font-family:Arial,"Noto Sans Hebrew",sans-serif;background:#fff8e9 url('${background}') center/cover no-repeat;color:#3f176b;position:relative}
+        .stars{display:none}.wrap{position:relative;height:100%;padding:34px 62px;text-align:center}.kicker{font-size:38px;font-weight:800;text-shadow:0 1px #fff}.headline{font-size:76px;line-height:.95;font-weight:900;margin:8px 0 18px;text-shadow:0 2px #fff}.headline span{color:#bd7b00}.middle{display:flex;align-items:center;justify-content:center;gap:40px}.cover{height:610px;max-width:430px;object-fit:contain;border:7px solid white;box-shadow:0 13px 32px #3f176b55}.medal{position:absolute;right:61px;top:235px;width:180px;height:180px;border-radius:50%;display:grid;place-items:center;color:#42156c;font-size:38px;font-weight:900;text-shadow:0 1px #fff}.logos{position:absolute;left:33px;bottom:86px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}.source{min-width:330px;height:64px;padding:5px 12px;background:#fffdf8eF;border:2px solid #c99019;border-radius:12px;display:flex;align-items:center;gap:10px;box-shadow:0 5px 14px #0002}.source img{width:95px;height:44px;object-fit:contain}.source span{font-size:23px;font-weight:900;color:#4a286a;white-space:nowrap}.date{position:absolute;bottom:22px;left:0;right:0;font-size:38px;font-weight:900;color:#3f176b;text-shadow:0 1px #fff}
       </style></head><body><div class="stars"></div><main class="wrap"><div class="kicker">מככבת השבוע</div><div class="headline">ברשימת <span>רבי־המכר!</span></div><div class="medal">רב־<br>מכר</div><div class="middle"><img class="cover" src="${cover}" alt="${escapeHtml(book.title)}"></div><div class="logos">${logos}</div><div class="date">${israelDate}</div></main></body></html>`;
       const page = await context.newPage();
       const attachmentName = `${book.id} -- ${safeName(book.title)} -- פוסט אינסטגרם -- ${israelDate}.png`;
