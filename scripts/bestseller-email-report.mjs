@@ -1,9 +1,11 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { collectBestsellerEvidence, createBestsellerSocialPosts } from "./bestseller-screenshots.mjs";
 
 const catalogUrl = process.env.CATALOG_URL || "https://mayalo22.github.io/sol-publishing-site/data.json";
 const mode = process.argv[2] || "monitor";
 const statePath = process.env.BESTSELLER_STATE_PATH || ".bestseller-state.json";
 const emailPath = process.env.BESTSELLER_EMAIL_PATH || ".bestseller-email.txt";
+const skipScreenshots = process.env.BESTSELLER_SKIP_SCREENSHOTS === "true";
 const outputPath = process.env.GITHUB_OUTPUT;
 const headers = {
   "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/138 Safari/537.36",
@@ -138,7 +140,7 @@ const currentBooks = books.map(book => {
     if (!result?.success) return previousSources.has(source.store) ? [source.store] : [];
     return candidates.some(candidate => result.text.includes(candidate)) ? [source.store] : [];
   });
-  return { id: String(book.id), title: book.title, sources: bookSources };
+  return { id: String(book.id), title: book.title, cover: book.cover, sources: bookSources, candidates: [book.title, book.sourceTitle, ...(aliases[String(book.id)] || [])].filter(Boolean) };
 });
 
 const now = new Date();
@@ -170,18 +172,51 @@ if (mode === "monitor") {
     console.log("No bestseller membership changes; no email will be sent.");
     await setOutputs({ send: "false", subject: "" });
   } else {
+    const changedPairs = [...new Set([...entered, ...exited])].map(item => {
+      const [id, store] = item.split("\t");
+      return { id, store };
+    });
+    const enteredSet = new Set(entered);
+    const evidence = skipScreenshots ? [] : await collectBestsellerEvidence({
+      sources,
+      books: currentBooks,
+      currentPairs: changedPairs.filter(pair => enteredSet.has(`${pair.id}\t${pair.store}`)),
+      exitedPairs: changedPairs.filter(pair => !enteredSet.has(`${pair.id}\t${pair.store}`))
+    });
+    const evidenceText = changedPairs.map(pair => {
+      const title = titleById.get(pair.id) || previousById.get(pair.id)?.title || pair.id;
+      const result = evidence.find(item => item.id === pair.id && item.store === pair.store);
+      if (result?.success) return `• ${title} — ${pair.store}: ${result.kind === "previous" ? "מצורפת הראיה האחרונה שנשמרה לפני היציאה" : "מצורף צילום עדכני מאזור רבי־המכר"} (${result.attachmentName})`;
+      return `• ${title} — ${pair.store}: לא ניתן היה לצלם הוכחה אמינה${result?.error ? ` (${result.error})` : ""}`;
+    }).join("\n");
+    const social = skipScreenshots ? [] : await createBestsellerSocialPosts({ books: currentBooks, bookIds: [...new Set(entered.map(item => item.split("\t")[0]))] });
+    const socialText = social.length ? social.map(item => item.success ? `• ${titleById.get(item.id)}: מצורף פוסט אינסטגרם לתאריך ${item.date} (${item.attachmentName})` : `• ${titleById.get(item.id)}: לא ניתן היה ליצור פוסט (${item.error})`).join("\n") : "אין ספרים שנכנסו ולכן לא נוצר פוסט חדש.";
     const warning = failedSources.length
       ? `\n\nלא ניתן היה לאמת כרגע: ${failedSources.join(", ")}. הסטטוס הקודם נשמר עבור מקורות אלה כדי למנוע התראת יציאה שגויה.`
       : "";
-    const body = `עדכון ברשימות רבי־המכר של הוצאת סול\n\nנכנסו לרבי־המכר:\n${formatChanges(entered)}\n\nיצאו מרבי־המכר:\n${formatChanges(exited)}\n\nהמצב הנוכחי:\n${formatCurrent(current)}${warning}\n\nזמן הבדיקה: ${checkedAt}\n\nמקורות:\n${sourceLinks()}\n`;
+    const body = `עדכון ברשימות רבי־המכר של הוצאת סול\n\nנכנסו לרבי־המכר:\n${formatChanges(entered)}\n\nיצאו מרבי־המכר:\n${formatChanges(exited)}\n\nראיות מצולמות:\n${evidenceText}\n\nפוסטים מוכנים לאינסטגרם:\n${socialText}\n\nהמצב הנוכחי:\n${formatCurrent(current)}${warning}\n\nזמן הבדיקה: ${checkedAt}\n\nמקורות:\n${sourceLinks()}\n`;
     await writeFile(emailPath, body, "utf8");
     await setOutputs({ send: "true", subject: `עדכון רבי־מכר של הוצאת סול — ${checkedAt.replace(/[\r\n]/g, " ")}` });
   }
 } else if (mode === "weekly") {
+  const currentPairs = currentBooks.flatMap(book => book.sources.map(store => ({ id: book.id, store })));
+  const evidence = skipScreenshots ? [] : await collectBestsellerEvidence({ sources, books: currentBooks, currentPairs, exitedPairs: [] });
+  const evidenceText = currentPairs.length ? currentPairs.map(pair => {
+    const book = currentBooks.find(item => item.id === pair.id);
+    const result = evidence.find(item => item.id === pair.id && item.store === pair.store);
+    return result?.success
+      ? `• ${book.title} — ${pair.store}: מצורף צילום מאזור רבי־המכר (${result.attachmentName})`
+      : `• ${book.title} — ${pair.store}: לא ניתן היה לצלם הוכחה אמינה${result?.error ? ` (${result.error})` : ""}`;
+  }).join("\n") : "אין ספרים פעילים ולכן אין צילומים לצרף.";
+  const social = skipScreenshots ? [] : await createBestsellerSocialPosts({ books: currentBooks, bookIds: currentBooks.filter(book => book.sources.length).map(book => book.id) });
+  const socialText = social.length ? social.map(item => {
+    const book = currentBooks.find(entry => entry.id === item.id);
+    return item.success ? `• ${book.title}: מצורף פוסט אינסטגרם לתאריך ${item.date} (${item.attachmentName})` : `• ${book.title}: לא ניתן היה ליצור פוסט (${item.error})`;
+  }).join("\n") : "אין ספרים פעילים ולכן לא נוצרו פוסטים.";
   const warning = failedSources.length
     ? `\n\nלא ניתן היה לאמת לאחר שלושה ניסיונות: ${failedSources.join(", ")}.`
     : "";
-  const body = `דוח רבי־המכר השבועי של הוצאת סול\n\n${formatCurrent(current)}${warning}\n\nזמן הבדיקה: ${checkedAt}\n\nמקורות:\n${sourceLinks()}\n`;
+  const body = `דוח רבי־המכר השבועי של הוצאת סול\n\n${formatCurrent(current)}${warning}\n\nראיות מצולמות:\n${evidenceText}\n\nפוסטים מוכנים לאינסטגרם:\n${socialText}\n\nזמן הבדיקה: ${checkedAt}\n\nמקורות:\n${sourceLinks()}\n`;
   await writeFile(emailPath, body, "utf8");
   await setOutputs({ send: "true", subject: `דוח רבי־המכר השבועי של הוצאת סול — ${checkedAt.replace(/[\r\n]/g, " ")}` });
 } else {

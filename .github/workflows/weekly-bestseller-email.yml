@@ -28,7 +28,10 @@ jobs:
         id: report
         env:
           CATALOG_URL: https://mayalo22.github.io/sol-publishing-site/data.json
-        run: node scripts/bestseller-email-report.mjs weekly
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+          node scripts/bestseller-email-report.mjs weekly
       - name: Send weekly email
         if: steps.clock.outputs.run == 'true' && steps.report.outputs.send == 'true'
         uses: dawidd6/action-send-mail@v3
@@ -42,3 +45,4 @@ jobs:
           to: mayalo22@gmail.com
           from: הוצאת סול <mayalo22@gmail.com>
           body: file://.bestseller-email.txt
+          attachments: .bestseller-attachments/*.png

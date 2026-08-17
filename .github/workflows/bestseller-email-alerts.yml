@@ -44,7 +44,9 @@ jobs:
         id: restore-state
         uses: actions/cache/restore@v4
         with:
-          path: .bestseller-state.json
+          path: |
+            .bestseller-state.json
+            .bestseller-proof-cache
           key: bestseller-state-${{ github.run_id }}
           restore-keys: bestseller-state-
       - name: Compare bestseller lists
@@ -52,12 +54,17 @@ jobs:
         id: report
         env:
           CATALOG_URL: https://mayalo22.github.io/sol-publishing-site/data.json
-        run: node scripts/bestseller-email-report.mjs monitor
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+          node scripts/bestseller-email-report.mjs monitor
       - name: Save current bestseller state
         if: steps.clock.outputs.run == 'true'
         uses: actions/cache/save@v4
         with:
-          path: .bestseller-state.json
+          path: |
+            .bestseller-state.json
+            .bestseller-proof-cache
           key: bestseller-state-${{ github.run_id }}
       - name: Send change email
         if: steps.clock.outputs.run == 'true' && steps.report.outputs.send == 'true'
@@ -72,4 +79,5 @@ jobs:
           to: mayalo22@gmail.com
           from: הוצאת סול <mayalo22@gmail.com>
           body: file://.bestseller-email.txt
+          attachments: .bestseller-attachments/*.png
 
