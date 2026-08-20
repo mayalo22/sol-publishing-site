@@ -9,23 +9,48 @@ const refreshBestsellers = process.env.REFRESH_BESTSELLERS !== "false";
 const bestsellerSources = [
   { store: "עברית", url: "https://www.e-vrit.co.il/category/34/רומן-רומנטי?orderby=3", products: true },
   { store: "ביבוקס", url: "https://bbooks.co.il/", section: true },
-  { store: "אינדיבוק", url: "https://indiebook.co.il/31/רבי-מכר" }
+  { store: "אינדיבוק", url: "https://indiebook.co.il/306/ספר-רב-מכר-מומלץ--ספרים-רבי-מכר-להורדה-מיידית-" }
 ];
 
 const bestsellerAliases = {
+  "39393": ["אאמין לך"],
   "40819": ["דואט סודות וחטאים"],
-  "40820": ["דואט סודות וחטאים"]
+  "40820": ["דואט סודות וחטאים"],
+  "40823": ["אבטח בך"]
 };
 
 const productSources = {
   "31855": { steimatzky: "https://www.steimatzky.co.il/012010346" },
   "38170": { booknet: "https://www.booknet.co.il/מוצרים/לא-אוותר-לעולם--מעיין-גלעד", steimatzky: "https://www.steimatzky.co.il/012010524" },
   "38171": { booknet: "https://www.booknet.co.il/מוצרים/בין-בריחה-לאהבה-1-160100000024", steimatzky: "https://www.steimatzky.co.il/012010525" },
-  "39393": { booknet: "https://www.booknet.co.il/מוצרים/אאמין-לך-1-160100000031", steimatzky: "https://www.steimatzky.co.il/012010555" },
+  "39393": {
+    bbooks: "https://bbooks.co.il/book/אאמין-לך",
+    indiebook: "https://indiebook.co.il/shop/אאמין-לך",
+    booknet: "https://www.booknet.co.il/מוצרים/אאמין-לך-1-160100000031",
+    steimatzky: "https://www.steimatzky.co.il/012010555"
+  },
   "39416": { booknet: "https://www.booknet.co.il/מוצרים/הדרקון-היהודי-160100000055", steimatzky: "https://www.steimatzky.co.il/012010556" },
   "39508": { booknet: "https://www.booknet.co.il/מוצרים/קוצים-160100000048", steimatzky: "https://www.steimatzky.co.il/012010557" },
   "39908": { booknet: "https://www.booknet.co.il/מוצרים/כוכבים-רואים-רק-בחושך-160100000079", steimatzky: "https://www.steimatzky.co.il/012010569" },
-  "40126": { booknet: "https://www.booknet.co.il/מוצרים/הטעם-החמישי-160100000062", steimatzky: "https://www.steimatzky.co.il/012010581" }
+  "40126": { booknet: "https://www.booknet.co.il/מוצרים/הטעם-החמישי-160100000062", steimatzky: "https://www.steimatzky.co.il/012010581" },
+  "40819": {
+    bbooks: "https://bbooks.co.il/book/סודות-וחטאים-1-",
+    indiebook: "https://indiebook.co.il/shop/סודות-וחטאים-1--הסוד-האפל-שלה",
+    booknet: "https://www.booknet.co.il/מוצרים/הסוד-האפל-שלה--סודות-וחטאים-1-160100000086",
+    steimatzky: "https://www.steimatzky.co.il/012011016"
+  },
+  "40820": {
+    bbooks: "https://bbooks.co.il/book/סודות-וחטאים-2-",
+    indiebook: "https://indiebook.co.il/shop/סודות-וחטאים-1--הסוד-האפל-שלה-עותק",
+    booknet: "https://www.booknet.co.il/מוצרים/החטא-המתוק-שלו--סודות-וחטאים-2-160100000093",
+    steimatzky: "https://www.steimatzky.co.il/012011017"
+  },
+  "40823": {
+    bbooks: "https://bbooks.co.il/book/אמון-וסכנה-2-",
+    indiebook: "https://indiebook.co.il/shop/אבטח-בך",
+    booknet: "https://www.booknet.co.il/מוצרים/אבטח-בך-2-160100000116",
+    steimatzky: "https://www.steimatzky.co.il/012011019"
+  }
 };
 
 async function fetchResource(url) {
@@ -160,6 +185,17 @@ function parseFormats(html, title, store) {
   return result;
 }
 
+function parseIndiebook(html, title) {
+  const result = parseFormats(html, title, "אינדיבוק");
+  const selectedPrice = html.match(/prd-price-text-ver-cont[^>]*>[\s\S]{0,300}?variation-finall-price[^>]*>\s*(\d+(?:\.\d+)?)\s*₪(?:[\s\S]{0,100}?<strike>\s*(\d+(?:\.\d+)?)\s*₪)?/i);
+  if (selectedPrice) {
+    const price = Number(selectedPrice[1]);
+    const priceBefore = selectedPrice[2] && Number(selectedPrice[2]) > price ? Number(selectedPrice[2]) : null;
+    result.digital = { store: "אינדיבוק", price, priceBefore };
+  }
+  return result;
+}
+
 function parseBooknet(html, title) {
   const text = productText(html, title);
   const match = text.match(/מחיר באתר\s*:?\s*(\d+(?:\.\d+)?)\s*₪/)
@@ -179,9 +215,9 @@ async function storeOffers(product, evritUrl, previous = {}) {
   const titleSlug = slug(title);
   const sources = productSources[String(product.ProductID)] || {};
   const stores = [
-    { key: "bbooks", name: "ביבוקס", url: `https://bbooks.co.il/book/${titleSlug}`, parse: (html) => parseFormats(html, title, "ביבוקס") },
-    { key: "indiebook", name: "אינדיבוק", url: `https://indiebook.co.il/shop/${titleSlug}`, parse: (html) => {
-      const parsed = parseFormats(html, title, "אינדיבוק");
+    { key: "bbooks", name: "ביבוקס", url: sources.bbooks || `https://bbooks.co.il/book/${titleSlug}`, parse: (html) => parseFormats(html, title, "ביבוקס") },
+    { key: "indiebook", name: "אינדיבוק", url: sources.indiebook || `https://indiebook.co.il/shop/${titleSlug}`, parse: (html) => {
+      const parsed = parseIndiebook(html, title);
       if (!parsed.digital) {
         const text = productText(html, title); const match = text.match(/(\d+(?:\.\d+)?)\s*₪/);
         if (match) parsed.digital = { store: "אינדיבוק", price: Number(match[1]), priceBefore: null };
