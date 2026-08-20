@@ -15,12 +15,13 @@ const headers = {
 const sources = [
   { store: "עברית", url: "https://www.e-vrit.co.il/content/292" },
   { store: "ביבוקס", url: "https://bbooks.co.il/רבי-מכר" },
-  { store: "אינדיבוק", url: "https://indiebook.co.il/31/רבי-מכר" }
+  { store: "אינדיבוק", url: "https://indiebook.co.il/306/ספר-רב-מכר-מומלץ--ספרים-רבי-מכר-להורדה-מיידית-" }
 ];
 
 const aliases = {
   "40819": ["דואט סודות וחטאים"],
-  "40820": ["דואט סודות וחטאים"]
+  "40820": ["דואט סודות וחטאים"],
+  "40823": ["אבטח בך"]
 };
 
 async function fetchResource(url) {

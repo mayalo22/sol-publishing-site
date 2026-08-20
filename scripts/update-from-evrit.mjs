@@ -9,12 +9,13 @@ const refreshBestsellers = process.env.REFRESH_BESTSELLERS !== "false";
 const bestsellerSources = [
   { store: "עברית", url: "https://www.e-vrit.co.il/category/34/רומן-רומנטי?orderby=3", products: true },
   { store: "ביבוקס", url: "https://bbooks.co.il/", section: true },
-  { store: "אינדיבוק", url: "https://indiebook.co.il/31/רבי-מכר" }
+  { store: "אינדיבוק", url: "https://indiebook.co.il/306/ספר-רב-מכר-מומלץ--ספרים-רבי-מכר-להורדה-מיידית-" }
 ];
 
 const bestsellerAliases = {
   "40819": ["דואט סודות וחטאים"],
-  "40820": ["דואט סודות וחטאים"]
+  "40820": ["דואט סודות וחטאים"],
+  "40823": ["אבטח בך"]
 };
 
 const productSources = {

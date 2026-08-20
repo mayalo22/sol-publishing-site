@@ -51,7 +51,7 @@ async function screenshotEvidence(page, source, book, destination) {
   const y = Math.max(0, Math.min(bookBox.y, titleBox.y) - 80);
   const right = Math.min(pageSize.width, Math.max(bookBox.x + bookBox.width, titleBox.x + titleBox.width) + 40);
   const bottom = Math.min(pageSize.height, Math.max(bookBox.y + bookBox.height, titleBox.y + titleBox.height) + 80);
-  if (bottom - y > 2200) {
+  if (source.store === "אינדיבוק" || bottom - y > 2200) {
     await page.evaluate(({ candidates }) => {
       const normalizedCandidates = candidates.map(value => value.trim()).filter(Boolean);
       const elements = [...document.querySelectorAll("body *")];
@@ -60,7 +60,9 @@ async function screenshotEvidence(page, source, book, destination) {
       const book = elements.find(element => normalizedCandidates.some(candidate => (element.textContent || "").includes(candidate)) && element.children.length < 4);
       if (!title || !book) throw new Error("לא ניתן היה לבודד את כותרת רבי־המכר והספר");
       const card = book.closest("li") || book.closest("article") || book.closest("[class*='product']") || book.parentElement;
-      const cover = card.querySelector("img") || card.parentElement?.querySelector("img");
+      const cover = [...document.querySelectorAll("img")].find(image => normalizedCandidates.some(candidate => (image.getAttribute("alt") || "").includes(candidate)))
+        || card.querySelector("img")
+        || card.parentElement?.querySelector("img");
       if (!cover) throw new Error("עטיפת הספר לא נמצאה באזור רבי־המכר");
       const proof = document.createElement("main");
       proof.id = "bestseller-proof";
