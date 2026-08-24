@@ -33,7 +33,7 @@ jobs:
           npx playwright install --with-deps chromium
           node scripts/bestseller-email-report.mjs weekly
       - name: Send weekly email
-        if: steps.clock.outputs.run == 'true' && steps.report.outputs.send == 'true'
+        if: ${{ false }} # Email delivery disabled by request
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
